@@ -67,7 +67,8 @@ const DietPlanTemplate=require('./Fitness/FitnessGoal/dietPlanTemplate')
 const WorkoutTemplate=require('./Fitness/FitnessGoal/workoutTemplate')
 const ExerciseLibrary=require('./Fitness/FitnessGoal/exerciseLibrary')
 const DailyWorkoutScheduling=require('./Fitness/FitnessGoal/dailyWorkoutScheduling')
-
+//Employee Form
+const EmployeeForm=require('./EmployeeForm/employeeForm')
 
 
 app.use(express.json())
@@ -2789,6 +2790,72 @@ app.delete('/dailyworkoutscheduling/:id',async(req,res)=>{
     }
 })
 
+//Employee Form
+//to create employee form
+app.post('/employeeform',async(req,res)=>{
+    try{
+     const employeeForm= await EmployeeForm.create(req.body)
+     res.status(200).json(employeeForm);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get employee form
+ app.get('/employeeform',async(req,res)=>{
+    try{
+        const  employeeForm= await  EmployeeForm.find({});
+        res.status(200).json( employeeForm);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  employee form by id
+app.get('/employeeform/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   employeeForm = await  EmployeeForm.findById(id);
+        res.status(200).json( employeeForm);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update employee form by id
+app.put('/employeeform/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   employeeForm= await  EmployeeForm.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!employeeForm){
+            return res.status(404).json({message:`cannot find any employee Form with ${id}`})
+        }
+        const updatedEmployeeForm = await  EmployeeForm.findById(id);
+        res.status(200).json( updatedEmployeeForm);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a employee form
+app.delete('/employeeform/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   employeeForm = await  EmployeeForm.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!employeeForm){
+            return res.status(404).json({message:`cannot find any employee form with ${id}`})
+        }
+        
+        res.status(200).json(employeeForm);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
 
 
 
