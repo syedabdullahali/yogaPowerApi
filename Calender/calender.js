@@ -21,7 +21,7 @@ const calenderSchema = mongoose.Schema(
                     required: true,
                 },
                 userTime: {
-                    type: String,
+                    type: Array,
                     required: true,
                 },
                 selectedTask: {
