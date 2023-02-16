@@ -1,5 +1,9 @@
 const express=require('express')
 const mongoose=require('mongoose')
+const app = express();
+var cors = require('cors')
+app.use(cors())
+
 const DailyAttendence=require('./Trainer/LiveClasses/dailyAttendence')
 const MonthlyReport=require('./Trainer/LiveClasses/monthlyReport')
 const ClientAttendenceReg=require('./Trainer/LiveClasses/clientAttendenceReg')
@@ -63,7 +67,7 @@ const DietPlanTemplate=require('./Fitness/FitnessGoal/dietPlanTemplate')
 const WorkoutTemplate=require('./Fitness/FitnessGoal/workoutTemplate')
 const ExerciseLibrary=require('./Fitness/FitnessGoal/exerciseLibrary')
 const DailyWorkoutScheduling=require('./Fitness/FitnessGoal/dailyWorkoutScheduling')
-const app=express()
+
 
 
 app.use(express.json())
