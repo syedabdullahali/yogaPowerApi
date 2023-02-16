@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "music-album",
+    "name": "tut",
     "builds": [
         {
             "src": "index.js",
