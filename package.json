@@ -1,23 +1,37 @@
-{
-  "name": "node",
+{  "name": "tut",
   "version": "1.0.0",
-  "description": "Sales API",
   "main": "index.js",
+  "description": "Sales API",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunnyvk/nodejs.git"
+  },
+  "keywords": [
+    "sk"
+  ],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sunnyvk/nodejs/issues"
+  },
+  "homepage": "https://github.com/sunnyvk/nodejs#readme",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "colors": "^1.4.0",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0",
+    "simple-node-logger": "^21.8.12",
+    "nodemailer": "^6.8.0",
     "cors": "^2.8.5",
-    "express": "^4.18.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.5.5",
-    "nodemailer": "^6.8.0"
+    "bcrypt": "^5.1.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.20"
   }
 }
