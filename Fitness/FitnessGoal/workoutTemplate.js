@@ -10,6 +10,14 @@ const WorkoutTemplateSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        Exercise_Image: {
+            type: String,
+            required: true,
+        },
+        Video: {
+            type: String,
+            required: true,
+        },
         Exercise_Name: {
             type: String,
             required: true,
