@@ -36,7 +36,7 @@ let employeeForms = new mongoose.Schema({
     AadharCard: String,
     Comment: String,
     selected: String,
-    status:Boolean||String,
+    status:Boolean,
     OfferLetter: String,
     AppoinmentLetter:String,
     Indexion: String
