@@ -6,6 +6,10 @@ const packageMasterSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+         username: {
+            type: String,
+            required: true,
+        },
         Service: {
             type: String,
             required: true,
