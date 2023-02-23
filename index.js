@@ -80,8 +80,11 @@ const ClientSupport=require('./CRM/ClientManagement/clientSupport')
 const PackageMaster=require('./Master/CenterSetup/packageMaster')
 //Appointment
 const Appointment=require('./Navbar/appointment')
-
-
+//Marketing
+const OfferMaster=require('./Marketing/offerMaster')
+const BulkMailer=require('./Marketing/bulkMailer')
+const BulkCalling=require('./Marketing/bulkCalling')
+const CustomerReview=require('./Marketing/customerReview')
 app.use(express.json())
 
 //Trainer
@@ -3269,6 +3272,277 @@ app.delete('/appointment/:id',async(req,res)=>{
         }
         
         res.status(200).json(appointment);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//Marketing
+//offer master
+//to create a offer master
+app.post('/offermaster',async(req,res)=>{
+    try{
+     const offerMaster= await OfferMaster.create(req.body)
+     res.status(200).json(offerMaster);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get offermaster
+ app.get('/offermaster',async(req,res)=>{
+    try{
+        const  offerMaster= await  OfferMaster.find({});
+        res.status(200).json(offerMaster);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get offer master by id
+app.get('/offermaster/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   offerMaster = await  OfferMaster.findById(id);
+        res.status(200).json( offerMaster);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update offer master by id
+app.put('/offermaster/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   offerMaster= await  OfferMaster.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!offerMaster){
+            return res.status(404).json({message:`cannot find any offer master with ${id}`})
+        }
+        const updatedOfferMaster = await  OfferMaster.findById(id);
+        res.status(200).json( updatedOfferMaster);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a offer master
+app.delete('/offermaster/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   offerMaster = await  OfferMaster.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!offerMaster){
+            return res.status(404).json({message:`cannot find any offer master with ${id}`})
+        }
+        
+        res.status(200).json(offerMaster);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//bulk mailer
+//to create a bulk mailer
+app.post('/bulkmailer',async(req,res)=>{
+    try{
+     const bulkMailer= await BulkMailer.create(req.body)
+     res.status(200).json(bulkMailer);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get bulk mailer
+ app.get('/bulkmailer',async(req,res)=>{
+    try{
+        const  bulkMailer= await  BulkMailer.find({});
+        res.status(200).json(bulkMailer);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get bulk mailer by id
+app.get('/bulkmailer/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   bulkMailer = await  BulkMailer.findById(id);
+        res.status(200).json( bulkMailer);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update bulk mailer by id
+app.put('/bulkmailer/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   bulkMailer= await  BulkMailer.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!bulkMailer){
+            return res.status(404).json({message:`cannot find any bulk mailer with ${id}`})
+        }
+        const updatedBulkMailer = await  BulkMailer.findById(id);
+        res.status(200).json( updatedBulkMailer);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a bulk mailer
+app.delete('/bulkmailer/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   bulkMailer = await  BulkMailer.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!bulkMailer){
+            return res.status(404).json({message:`cannot find any bulk mailer with ${id}`})
+        }
+        
+        res.status(200).json(bulkMailer);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//bulk calling
+//to create a bulk calling
+app.post('/bulkcalling',async(req,res)=>{
+    try{
+     const bulkCalling= await BulkCalling.create(req.body)
+     res.status(200).json(bulkCalling);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get bulk calling
+ app.get('/bulkcalling',async(req,res)=>{
+    try{
+        const  bulkCalling= await  BulkCalling.find({});
+        res.status(200).json(bulkCalling);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get bulk calling by id
+app.get('/bulkcalling/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   bulkCalling = await  BulkCalling.findById(id);
+        res.status(200).json( bulkCalling);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update bulk calling by id
+app.put('/bulkcalling/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   bulkCalling= await  BulkCalling.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!bulkCalling){
+            return res.status(404).json({message:`cannot find any bulk calling with ${id}`})
+        }
+        const updatedBulkCalling = await  BulkCalling.findById(id);
+        res.status(200).json( updatedBulkCalling);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a bulk calling
+app.delete('/bulkcalling/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   bulkCalling = await  BulkCalling.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!bulkCalling){
+            return res.status(404).json({message:`cannot find any bulk calling with ${id}`})
+        }
+        
+        res.status(200).json(bulkCalling);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//customer review
+//to create a customer review
+app.post('/customerreview',async(req,res)=>{
+    try{
+     const customerReview= await CustomerReview.create(req.body)
+     res.status(200).json(customerReview);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get customer review
+ app.get('/customerreview',async(req,res)=>{
+    try{
+        const  customerReview= await  CustomerReview.find({});
+        res.status(200).json(customerReview);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  customer review by id
+app.get('/customerreview/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   customerReview = await  CustomerReview.findById(id);
+        res.status(200).json( customerReview);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update customer review by id
+app.put('/customerreview/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   customerReview= await  CustomerReview.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!customerReview){
+            return res.status(404).json({message:`cannot find any customer review with ${id}`})
+        }
+        const updatedCustomerReview = await  CustomerReview.findById(id);
+        res.status(200).json( updatedCustomerReview);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a customer review
+app.delete('/customerreview/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   customerReview = await  CustomerReview.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!customerReview){
+            return res.status(404).json({message:`cannot find any customer review with ${id}`})
+        }
+        
+        res.status(200).json(customerReview);
         
     }catch(error){
         res.status(500).json({message:error.message})
