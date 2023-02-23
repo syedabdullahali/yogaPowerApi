@@ -69,6 +69,17 @@ const ExerciseLibrary=require('./Fitness/FitnessGoal/exerciseLibrary')
 const DailyWorkoutScheduling=require('./Fitness/FitnessGoal/dailyWorkoutScheduling')
 //Employee Form
 const EmployeeForm=require('./EmployeeForm/employeeForm')
+//CRM
+//Client Management
+const RenewalsClient=require('./CRM/ClientManagement/renewalsClient')
+const RenewedClient=require('./CRM/ClientManagement/renewedClient')
+const LeftClient=require('./CRM/ClientManagement/leftClients')
+const ClientSupport=require('./CRM/ClientManagement/clientSupport')
+//Master
+//CenterSetup
+const PackageMaster=require('./Master/CenterSetup/packageMaster')
+//Appointment
+const Appointment=require('./Navbar/appointment')
 
 
 app.use(express.json())
@@ -2857,6 +2868,412 @@ app.delete('/employeeform/:id',async(req,res)=>{
     }
 })
 
+
+//CRM
+//Renewals client
+//to create renewals client
+app.post('/renewalsclient',async(req,res)=>{
+    try{
+     const renewalsClient= await RenewalsClient.create(req.body)
+     res.status(200).json(renewalsClient);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get renewals Client
+ app.get('/renewalsClient',async(req,res)=>{
+    try{
+        const  renewalsClient= await  RenewalsClient.find({});
+        res.status(200).json( renewalsClient);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  renewals client by id
+app.get('/renewalsclient/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   renewalsClient = await  RenewalsClient.findById(id);
+        res.status(200).json( renewalsClient);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update renewals client by id
+app.put('/renewalsclient/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   renewalsClient= await  RenewalsClient.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!renewalsClient){
+            return res.status(404).json({message:`cannot find any renewals client with ${id}`})
+        }
+        const updatedRenewalsClient = await  RenewalsClient.findById(id);
+        res.status(200).json( updatedRenewalsClient);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a renewals client
+app.delete('/renewalsclient/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   renewalsClient = await  RenewalsClient.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!renewalsClient){
+            return res.status(404).json({message:`cannot find any renewals client with ${id}`})
+        }
+        
+        res.status(200).json(renewalsClient);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//Renewed client
+//to create renewed client
+app.post('/renewedclient',async(req,res)=>{
+    try{
+     const renewedClient= await RenewedClient.create(req.body)
+     res.status(200).json(renewedClient);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get Renewed Client
+ app.get('/renewedclient',async(req,res)=>{
+    try{
+        const  renewedClient= await  RenewedClient.find({});
+        res.status(200).json( renewedClient);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  Renewed Client by id
+app.get('/renewedclient/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   renewedClient = await  RenewedClient.findById(id);
+        res.status(200).json( renewedClient);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update Renewed client by id
+app.put('/renewedclient/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   renewedClient= await  RenewedClient.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!renewedClient){
+            return res.status(404).json({message:`cannot find any renewed client with ${id}`})
+        }
+        const updatedRenewedClient = await  RenewedClient.findById(id);
+        res.status(200).json( updatedRenewedClient);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a Renewed client
+app.delete('/renewedclient/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   renewedClient = await  RenewedClient.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!renewedClient){
+            return res.status(404).json({message:`cannot find any renewed client with ${id}`})
+        }
+        
+        res.status(200).json(renewedClient);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//Left Client
+//to create left client
+app.post('/leftclient',async(req,res)=>{
+    try{
+     const leftClient= await LeftClient.create(req.body)
+     res.status(200).json(leftClient);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get left Client
+ app.get('/leftclient',async(req,res)=>{
+    try{
+        const  leftClient= await  LeftClient.find({});
+        res.status(200).json(leftClient);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  left Client by id
+app.get('/leftclient/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   leftClient = await  LeftClient.findById(id);
+        res.status(200).json( leftClient);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update left client by id
+app.put('/leftclient/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   leftClient= await  LeftClient.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!leftClient){
+            return res.status(404).json({message:`cannot find any left client with ${id}`})
+        }
+        const updatedLeftClient = await  LeftClient.findById(id);
+        res.status(200).json( updatedLeftClient);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a Left client
+app.delete('/leftclient/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   leftClient = await  LeftClient.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!leftClient){
+            return res.status(404).json({message:`cannot find any left client with ${id}`})
+        }
+        
+        res.status(200).json(leftClient);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//Client Support
+//to create client support
+app.post('/clientsupport',async(req,res)=>{
+    try{
+     const clientSupport= await ClientSupport.create(req.body)
+     res.status(200).json(clientSupport);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get client support
+ app.get('/clientsupport',async(req,res)=>{
+    try{
+        const  clientSupport= await  ClientSupport.find({});
+        res.status(200).json(clientSupport);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  Client support by id
+app.get('/clientsupport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   clientSupport = await  ClientSupport.findById(id);
+        res.status(200).json( clientSupport);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update client support by id
+app.put('/clientsupport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   clientSupport= await  ClientSupport.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!clientSupport){
+            return res.status(404).json({message:`cannot find any client support with ${id}`})
+        }
+        const updatedClientSupport = await  ClientSupport.findById(id);
+        res.status(200).json( updatedClientSupport);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a client Support
+app.delete('/clientsupport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   clientSupport = await  ClientSupport.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!clientSupport){
+            return res.status(404).json({message:`cannot find any client support with ${id}`})
+        }
+        
+        res.status(200).json(clientSupport);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//Master
+//CenterSetup
+//Package Master
+//to create package master
+app.post('/packagemaster',async(req,res)=>{
+    try{
+     const packageMaster= await PackageMaster.create(req.body)
+     res.status(200).json(packageMaster);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get package master
+ app.get('/packagemaster',async(req,res)=>{
+    try{
+        const  packageMaster= await  PackageMaster.find({});
+        res.status(200).json(packageMaster);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get package Master by id
+app.get('/packagemaster/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   packageMaster = await  PackageMaster.findById(id);
+        res.status(200).json( packageMaster);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update package master by id
+app.put('/packagemaster/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   packageMaster= await  PackageMaster.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!packageMaster){
+            return res.status(404).json({message:`cannot find any package master with ${id}`})
+        }
+        const updatedPackageMaster = await  PackageMaster.findById(id);
+        res.status(200).json( updatedPackageMaster);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a package master
+app.delete('/packagemaster/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   packageMaster = await  PackageMaster.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!packageMaster){
+            return res.status(404).json({message:`cannot find any package master with ${id}`})
+        }
+        
+        res.status(200).json(packageMaster);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//Appointment
+//to create appointent
+app.post('/appointment',async(req,res)=>{
+    try{
+     const appointment= await Appointment.create(req.body)
+     res.status(200).json(appointment);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get appointment
+ app.get('/appointment',async(req,res)=>{
+    try{
+        const  appointment= await  Appointment.find({});
+        res.status(200).json(appointment);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get appointment by id
+app.get('/appointment/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   appointment = await  Appointment.findById(id);
+        res.status(200).json( appointment);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update appointment by id
+app.put('/appointment/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   appointment= await  Appointment.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!appointment){
+            return res.status(404).json({message:`cannot find any appointment with ${id}`})
+        }
+        const updatedAppointment = await  Appointment.findById(id);
+        res.status(200).json( updatedAppointment);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a appointment
+app.delete('/appointment/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   appointment = await  Appointment.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!appointment){
+            return res.status(404).json({message:`cannot find any appointment with ${id}`})
+        }
+        
+        res.status(200).json(appointment);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
 
 
 mongoose.set("strictQuery",false)
