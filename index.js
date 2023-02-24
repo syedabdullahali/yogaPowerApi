@@ -87,6 +87,14 @@ const BulkCalling=require('./Marketing/bulkCalling')
 const CustomerReview=require('./Marketing/customerReview')
 //HRManagement
 const EmployeeTargetSheet=require('./HRManagement/employeeTargetSheet')
+//Finance
+//Invoice
+const TotalInvoice=require('./Finance/Invoices/totalInvoices')
+const PaidInvoice=require('./Finance/Invoices/paidInvoices')
+const BalancePayment=require('./Finance/Invoices/balancePayment')
+const Receipts=require('./Finance/Invoices/receipts')
+const CancelledInvoice=require('./Finance/Invoices/cancelledInvoice')
+const CommentsInvoice=require('./Finance/Invoices/commentsInvoice')
 app.use(express.json())
 
 //Trainer
@@ -3618,7 +3626,413 @@ app.delete('/employeetargetsheet/:id',async(req,res)=>{
     }
 })
 
+//Finance
+//Invoices
+//Total Invoices
+//to create a total Invoice
+app.post('/totalinvoice',async(req,res)=>{
+    try{
+     const totalInvoice= await TotalInvoice.create(req.body)
+     res.status(200).json(totalInvoice);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
 
+ //to get total invoice
+ app.get('/totalinvoice',async(req,res)=>{
+    try{
+        const  totalInvoice= await  TotalInvoice.find({});
+        res.status(200).json(totalInvoice);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  total invoice by id
+app.get('/totalinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   totalInvoice = await  TotalInvoice.findById(id);
+        res.status(200).json( totalInvoice);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update total invoice by id
+app.put('/totalinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   totalInvoice= await  TotalInvoice.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!totalInvoice){
+            return res.status(404).json({message:`cannot find any total invoice with ${id}`})
+        }
+        const updatedTotalInvoice = await  TotalInvoice.findById(id);
+        res.status(200).json( updatedTotalInvoice);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a total Invoice
+app.delete('/totalinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   totalInvoice = await  TotalInvoice.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!totalInvoice){
+            return res.status(404).json({message:`cannot find any total Invoice with ${id}`})
+        }
+        
+        res.status(200).json(totalInvoice);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//Paid Invoices
+//to create a paid Invoice
+app.post('/paidinvoice',async(req,res)=>{
+    try{
+     const paidInvoice= await PaidInvoice.create(req.body)
+     res.status(200).json(paidInvoice);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get paid invoice
+ app.get('/paidinvoice',async(req,res)=>{
+    try{
+        const  paidInvoice= await  PaidInvoice.find({});
+        res.status(200).json(paidInvoice);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  paid invoice by id
+app.get('/paidinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   paidInvoice = await  PaidInvoice.findById(id);
+        res.status(200).json( paidInvoice);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update paid invoice by id
+app.put('/paidinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   paidInvoice= await  PaidInvoice.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!paidInvoice){
+            return res.status(404).json({message:`cannot find any paid invoice with ${id}`})
+        }
+        const updatedPaidInvoice = await  PaidInvoice.findById(id);
+        res.status(200).json( updatedPaidInvoice);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a paid Invoice
+app.delete('/paidinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   paidInvoice = await  PaidInvoice.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!paidInvoice){
+            return res.status(404).json({message:`cannot find any paid Invoice with ${id}`})
+        }
+        
+        res.status(200).json(paidInvoice);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//Balance Payment
+//to create a balance Payment
+app.post('/balancepayment',async(req,res)=>{
+    try{
+     const balancePayment= await BalancePayment.create(req.body)
+     res.status(200).json(balancePayment);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get balance Payment
+ app.get('/balancepayment',async(req,res)=>{
+    try{
+        const  balancePayment= await  BalancePayment.find({});
+        res.status(200).json(balancePayment);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  balance payment by id
+app.get('/balancepayment/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   balancePayment = await  BalancePayment.findById(id);
+        res.status(200).json( balancePayment);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update balance payment by id
+app.put('/balancepayment/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   balancePayment= await  BalancePayment.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!balancePayment){
+            return res.status(404).json({message:`cannot find any balance payment with ${id}`})
+        }
+        const updatedBalancePayment = await  BalancePayment.findById(id);
+        res.status(200).json( updatedBalancePayment);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a balance payment
+app.delete('/balancepayment/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   balancePayment = await  BalancePayment.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!balancePayment){
+            return res.status(404).json({message:`cannot find any balance payment with ${id}`})
+        }
+        
+        res.status(200).json(balancePayment);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//Receipts
+//to create a receipts
+app.post('/receipts',async(req,res)=>{
+    try{
+     const receipts= await Receipts.create(req.body)
+     res.status(200).json(receipts);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get receipts
+ app.get('/receipts',async(req,res)=>{
+    try{
+        const  receipts= await  Receipts.find({});
+        res.status(200).json(receipts);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  receipts by id
+app.get('/receipts/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   receipts = await  Receipts.findById(id);
+        res.status(200).json( receipts);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update receipt by id
+app.put('/receipts/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   receipts= await  Receipts.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!receipts){
+            return res.status(404).json({message:`cannot find any receipt with ${id}`})
+        }
+        const updatedReceipts = await  Receipts.findById(id);
+        res.status(200).json( updatedReceipts);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a receipts
+app.delete('/receipts/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   receipts = await  Receipts.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!receipts){
+            return res.status(404).json({message:`cannot find any receipt with ${id}`})
+        }
+        
+        res.status(200).json(receipts);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//Cancelled Invoice
+//to create a cancelled Invoice
+app.post('/cancelledinvoice',async(req,res)=>{
+    try{
+     const cancelledInvoice= await CancelledInvoice.create(req.body)
+     res.status(200).json(cancelledInvoice);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get cancelled Invoice
+ app.get('/cancelledinvoice',async(req,res)=>{
+    try{
+        const  cancelledInvoice= await  CancelledInvoice.find({});
+        res.status(200).json(cancelledInvoice);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  cancelled Invoice by id
+app.get('/cancelledinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   cancelledInvoice = await  CancelledInvoice.findById(id);
+        res.status(200).json( cancelledInvoice);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update cancelled Invoice by id
+app.put('/cancelledinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   cancelledInvoice= await  CancelledInvoice.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!cancelledInvoice){
+            return res.status(404).json({message:`cannot find any cancelled Invoice  with ${id}`})
+        }
+        const updatedCancelledInvoice = await  CancelledInvoice.findById(id);
+        res.status(200).json( updatedCancelledInvoice);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a cancelled invoice
+app.delete('/cancelledinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   cancelledInvoice = await  CancelledInvoice.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!cancelledInvoice){
+            return res.status(404).json({message:`cannot find any cancelled Invoice with ${id}`})
+        }
+        
+        res.status(200).json(cancelledInvoice);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//Comments Invoice
+//to create a Comments Invoice
+app.post('/commentsinvoice',async(req,res)=>{
+    try{
+     const commentsInvoice= await CommentsInvoice.create(req.body)
+     res.status(200).json(commentsInvoice);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get comments Invoice
+ app.get('/commentsinvoice',async(req,res)=>{
+    try{
+        const  commentsInvoice= await  CommentsInvoice.find({});
+        res.status(200).json(commentsInvoice);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get comments Invoice by id
+app.get('/commentsinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   commentsInvoice = await  CommentsInvoice.findById(id);
+        res.status(200).json( commentsInvoice);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update comments Invoice by id
+app.put('/commentsinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   commentsInvoice= await  CommentsInvoice.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!commentsInvoice){
+            return res.status(404).json({message:`cannot find any comments Invoice  with ${id}`})
+        }
+        const updatedCommentsInvoice = await  CommentsInvoice.findById(id);
+        res.status(200).json( updatedCommentsInvoice);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a cancelled invoice
+app.delete('/commentsinvoice/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   commentsInvoice = await  CommentsInvoice.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!commentsInvoice){
+            return res.status(404).json({message:`cannot find any Comments Invoice with ${id}`})
+        }
+        
+        res.status(200).json(commentsInvoice);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
 
 
 mongoose.set("strictQuery",false)

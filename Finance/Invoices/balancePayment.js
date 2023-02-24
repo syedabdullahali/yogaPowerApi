@@ -22,7 +22,7 @@ const balancePaymentSchema = mongoose.Schema(
             type: String,
             required: true
         },
-        Service: {
+        Services: {
             type: String,
             required: true
         },

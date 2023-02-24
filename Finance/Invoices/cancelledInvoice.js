@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const totalInvoiceSchema = mongoose.Schema(
+const cancelledInvoiceSchema = mongoose.Schema(
     {
         Sr_No: {
             type: String,
@@ -14,35 +14,23 @@ const totalInvoiceSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        Invoice_No: {
+            type: String,
+            required: true,
+        },
         Client_Id: {
             type: String,
             required: true,
         },
-        Client_Name: {
+        Member_Name: {
             type: String,
             required: true
         },
-        Invoice_No: {
+        Service_Duration:{
             type: String,
             required: true
         },
-        Services: {
-            type: String,
-            required: true
-        },
-        Start_Date: {
-            type: String,
-            required: true
-        },
-        End_Date: {
-            type: String,
-            required: true
-        },
-        Counseller: {
-            type: String,
-            required: true
-        },
-        Trainer: {
+        Start_Date:{
             type: String,
             required: true
         },
@@ -50,19 +38,11 @@ const totalInvoiceSchema = mongoose.Schema(
             type: String,
             required: true
         },
-        Amount: {
+        Final_Amount: {
             type: String,
             required: true
         },
-        Tax: {
-            type: String,
-            required: true
-        },
-        Total_Amount: {
-            type: String,
-            required: true
-        },
-        Paid: {
+        Paid_Amount: {
             type: String,
             required: true
         },
@@ -70,26 +50,22 @@ const totalInvoiceSchema = mongoose.Schema(
             type: String,
             required: true
         },
-        Pay_Mode: {
+        PayMode: {
             type: String,
             required: true
         },
-        Comments: {
+        Cancelled_By: {
             type: String,
             required: true
         },
-        Invoice: {
-            type: String,
-            required: true
-        },
-        Cancel_Invoice: {
+        Reason: {
             type: String,
             required: true
         },
     },
 )
 
-const TotalInvoice = mongoose.model('TotalInvoice', totalInvoiceSchema);
+const CancelledInvoice = mongoose.model('CancelledInvoice', cancelledInvoiceSchema);
 
 
-module.exports = TotalInvoice;
+module.exports = CancelledInvoice;

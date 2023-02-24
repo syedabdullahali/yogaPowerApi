@@ -41,8 +41,20 @@ const salesTargetSchema = mongoose.Schema(
         Achived:{
             type: String,
             required:true
-        }
-
+        },
+        annualTarget:[
+                {
+                    monthName:{
+                        type: String,
+                        required:true
+                    },
+                    Target:{    
+                        type: String,
+                        required:true
+                    }
+                }
+                
+            ]
     },
     
 )

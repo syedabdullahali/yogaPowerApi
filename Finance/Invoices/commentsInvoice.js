@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const paidInvoiceSchema = mongoose.Schema(
+const commentsInvoiceSchema = mongoose.Schema(
     {
         Sr_No: {
             type: String,
@@ -10,51 +10,34 @@ const paidInvoiceSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        Invoice_No: {
-            type: String,
-            required: true,
-        },
         Client_Id: {
             type: String,
             required: true,
         },
-        Client_Name: {
+        Member_Name: {
             type: String,
             required: true
         },
-        Receipts_No: {
+        Services:{
             type: String,
             required: true
         },
-        Services: {
+        Cancelled_By: {
             type: String,
             required: true
         },
-        Total_Amount: {
+        Invoice_No: {
             type: String,
             required: true
         },
-        Paid: {
+        Comments: {
             type: String,
             required: true
         },
-        Balance: {
-            type: String,
-            required: true
-        },
-        PayMode: {
-            type: String,
-            required: true
-        },
-        Created_By: {
-            type: String,
-            required: true
-        },
-
     },
 )
 
-const PaidInvoice = mongoose.model('PaidInvoice', paidInvoiceSchema);
+const CommentsInvoice = mongoose.model('CommentsInvoice', commentsInvoiceSchema);
 
 
-module.exports = PaidInvoice;
+module.exports = CommentsInvoice;
