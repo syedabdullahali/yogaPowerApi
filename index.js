@@ -85,6 +85,8 @@ const OfferMaster=require('./Marketing/offerMaster')
 const BulkMailer=require('./Marketing/bulkMailer')
 const BulkCalling=require('./Marketing/bulkCalling')
 const CustomerReview=require('./Marketing/customerReview')
+//HRManagement
+const EmployeeTargetSheet=require('./HRManagement/employeeTargetSheet')
 app.use(express.json())
 
 //Trainer
@@ -3548,6 +3550,75 @@ app.delete('/customerreview/:id',async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 })
+
+//HR Mangement
+//to create a employee target sheet
+app.post('/employeetargetsheet',async(req,res)=>{
+    try{
+     const employeeTargetSheet= await EmployeeTargetSheet.create(req.body)
+     res.status(200).json(employeeTargetSheet);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get employee target sheet
+ app.get('/employeetargetsheet',async(req,res)=>{
+    try{
+        const  employeeTargetSheet= await  EmployeeTargetSheet.find({});
+        res.status(200).json(employeeTargetSheet);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get  employee target sheet by id
+app.get('/employeetargetsheet/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   employeeTargetSheet = await  EmployeeTargetSheet.findById(id);
+        res.status(200).json( employeeTargetSheet);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update employee target sheet by id
+app.put('/employeetargetsheet/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   employeeTargetSheet= await  EmployeeTargetSheet.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!employeeTargetSheet){
+            return res.status(404).json({message:`cannot find any employee Target Sheet with ${id}`})
+        }
+        const updatedEmployeeTargetSheet = await  EmployeeTargetSheet.findById(id);
+        res.status(200).json( updatedEmployeeTargetSheet);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a employee target sheet
+app.delete('/employeetargetsheet/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   employeeTargetSheet = await  EmployeeTargetSheet.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!employeeTargetSheet){
+            return res.status(404).json({message:`cannot find any employee target sheet with ${id}`})
+        }
+        
+        res.status(200).json(employeeTargetSheet);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
 
 
 mongoose.set("strictQuery",false)

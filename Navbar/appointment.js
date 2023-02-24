@@ -50,6 +50,10 @@ const appointmentSchema = mongoose.Schema(
             type: String,
             required: true
         },
+        Cancel: {
+            type: String,
+            required: true
+        },
         
     },
 )
