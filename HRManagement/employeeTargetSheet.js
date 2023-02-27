@@ -66,6 +66,14 @@ const employeeTargetSheetSchema = mongoose.Schema(
             type: String,
             required: true
         },
+        Id: {
+            type: String,
+            required: true
+        },
+        TargetValue: {
+            type: String,
+            required: true
+        },
       
     },
 )
