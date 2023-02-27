@@ -96,7 +96,9 @@ const Receipts=require('./Finance/Invoices/receipts')
 const CancelledInvoice=require('./Finance/Invoices/cancelledInvoice')
 const CommentsInvoice=require('./Finance/Invoices/commentsInvoice')
 //Revenues
-const RevenueDetails=require('./Finance/Invoices/receipts')
+const RevenueDetails=require('./Finance/Revenues/revenueDetails')
+const ServiceWiseRevenue=require('./Finance/Revenues/serviceWiseRevenue')
+const RenewlsRevenue=require('./Finance/Revenues/renewlsRevenue')
 app.use(express.json())
 
 //Trainer
@@ -4035,6 +4037,211 @@ app.delete('/commentsinvoice/:id',async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 })
+
+//Revenues
+
+//Revenue Details
+//to create a Revenue Details
+app.post('/revenuedetails',async(req,res)=>{
+    try{
+     const revenueDetails= await RevenueDetails.create(req.body)
+     res.status(200).json(revenueDetails);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get revenue Details
+ app.get('/revenuedetails',async(req,res)=>{
+    try{
+        const  revenueDetails= await  RevenueDetails.find({});
+        res.status(200).json(revenueDetails);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get revenue Details by id
+app.get('/revenuedetails/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   revenueDetails = await  RevenueDetails.findById(id);
+        res.status(200).json( revenueDetails);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update revenue Details by id
+app.put('/revenuedetails/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   revenueDetails= await  RevenueDetails.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!revenueDetails){
+            return res.status(404).json({message:`cannot find any Revenue Details  with ${id}`})
+        }
+        const updatedRevenueDetails = await  RevenueDetails.findById(id);
+        res.status(200).json( updatedRevenueDetails);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a revenue details
+app.delete('/revenuedetails/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   revenueDetails = await  RevenueDetails.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!revenueDetails){
+            return res.status(404).json({message:`cannot find any Revenue Details with ${id}`})
+        }
+        
+        res.status(200).json(revenueDetails);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//Renewls Revenue
+//to create a Renewls Revenue
+app.post('/renewlsrevenue',async(req,res)=>{
+    try{
+     const renewlsRevenue= await RenewlsRevenue.create(req.body)
+     res.status(200).json(renewlsRevenue);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get revenue Details
+ app.get('/renewlsrevenue',async(req,res)=>{
+    try{
+        const  renewlsRevenue= await  RenewlsRevenue.find({});
+        res.status(200).json(renewlsRevenue);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get revenue Details by id
+app.get('/renewlsrevenue/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   renewlsRevenue = await  RenewlsRevenue.findById(id);
+        res.status(200).json( renewlsRevenue);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update revenue Details by id
+app.put('/renewlsrevenue/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   renewlsRevenue= await  RenewlsRevenue.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!renewlsRevenue){
+            return res.status(404).json({message:`cannot find any Renewls Revenue with ${id}`})
+        }
+        const updatedRenewlsRevenue = await  RenewlsRevenue.findById(id);
+        res.status(200).json( updatedRenewlsRevenue);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a Renewls Revenue
+app.delete('/renewlsrevenue/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   renewlsRevenue = await  RenewlsRevenue.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!renewlsRevenue){
+            return res.status(404).json({message:`cannot find any Renewls Revenue with ${id}`})
+        }
+        
+        res.status(200).json(renewlsRevenue);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//Service Wise Revenue
+//to create a Service Wise Revenue
+app.post('/servicewiserevenue',async(req,res)=>{
+    try{
+     const serviceWiseRevenue= await ServiceWiseRevenue.create(req.body)
+     res.status(200).json(serviceWiseRevenue);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get serviceWise Revenue
+ app.get('/servicewiserevenue',async(req,res)=>{
+    try{
+        const  serviceWiseRevenue= await  ServiceWiseRevenue.find({});
+        res.status(200).json(serviceWiseRevenue);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get servicewiserevenue by id
+app.get('/servicewiserevenue/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   serviceWiseRevenue = await  ServiceWiseRevenue.findById(id);
+        res.status(200).json( serviceWiseRevenue);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update serviceWise Revenue by id
+app.put('/servicewiserevenue/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   serviceWiseRevenue= await  ServiceWiseRevenue.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!serviceWiseRevenue){
+            return res.status(404).json({message:`cannot find any  serviceWise Revenue with ${id}`})
+        }
+        const updatedServiceWiseRevenue = await  ServiceWiseRevenue.findById(id);
+        res.status(200).json( updatedServiceWiseRevenue);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a serviceWise Revenue
+app.delete('/servicewiserevenue/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   serviceWiseRevenue = await  ServiceWiseRevenue.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!serviceWiseRevenue){
+            return res.status(404).json({message:`cannot find any serviceWise Revenue with ${id}`})
+        }
+        
+        res.status(200).json(serviceWiseRevenue);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
 
 
 mongoose.set("strictQuery",false)
