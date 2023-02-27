@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const mediaTargetSchema = mongoose.Schema(
     {
         Sr_No:{
-            type: Number,
+            type: String,
             required:true
         },
         Employee:{

@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const leadsTargetSchema = mongoose.Schema(
     {
         Sr_No:{
-            type: Number,
+            type: String,
             required:true
         },
         Employee:{
