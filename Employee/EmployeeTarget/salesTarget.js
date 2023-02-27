@@ -6,6 +6,10 @@ const salesTargetSchema = mongoose.Schema(
             type: String,
             required:true
         },
+        Year:{
+            type: String,
+            required:true
+        },
         Employee:{
             type:String,
             required:[true,"Please enter a employee name"],

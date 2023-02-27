@@ -95,6 +95,8 @@ const BalancePayment=require('./Finance/Invoices/balancePayment')
 const Receipts=require('./Finance/Invoices/receipts')
 const CancelledInvoice=require('./Finance/Invoices/cancelledInvoice')
 const CommentsInvoice=require('./Finance/Invoices/commentsInvoice')
+//Revenues
+const RevenueDetails=require('./Finance/Invoices/receipts')
 app.use(express.json())
 
 //Trainer
