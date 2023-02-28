@@ -99,6 +99,19 @@ const CommentsInvoice=require('./Finance/Invoices/commentsInvoice')
 const RevenueDetails=require('./Finance/Revenues/revenueDetails')
 const ServiceWiseRevenue=require('./Finance/Revenues/serviceWiseRevenue')
 const RenewlsRevenue=require('./Finance/Revenues/renewlsRevenue')
+const NewClientRevenue=require('./Finance/Revenues/newClientRevenue')
+const LeadReport=require('./Finance/Revenues/leadReport')
+const RevenueReport=require('./Finance/Revenues/revenueReport')
+//Collection Report
+const TotalCollection=require('./Finance/CollectionReport/totalCollection')
+const paymentMode=require('./Finance/CollectionReport/paymentMode')
+const CashReport=require('./Finance/CollectionReport/cashReport')
+const ChequeReport=require('./Finance/CollectionReport/chequeReport');
+const PaymentMode = require('./Finance/CollectionReport/paymentMode');
+//Expense
+const CenterExpense = require('./Finance/Expense/centerExpense');
+const DailyExpense = require('./Finance/Expense/dailyExpense');
+const PettyCash = require('./Finance/Expense/pettyCash');
 app.use(express.json())
 
 //Trainer
@@ -4236,6 +4249,693 @@ app.delete('/servicewiserevenue/:id',async(req,res)=>{
         }
         
         res.status(200).json(serviceWiseRevenue);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//New Client Revenue
+
+//to create a New Client Revenue
+app.post('/newclientrevenue',async(req,res)=>{
+    try{
+     const newClientRevenue= await NewClientRevenue.create(req.body)
+     res.status(200).json(newClientRevenue);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get new Client Revenue
+ app.get('/newclientrevenue',async(req,res)=>{
+    try{
+        const  newClientRevenue= await  NewClientRevenue.find({});
+        res.status(200).json(newClientRevenue);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get new Client Revenue by id
+app.get('/newclientrevenue/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   newClientRevenue = await  NewClientRevenue.findById(id);
+        res.status(200).json( newClientRevenue);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update new Client Revenue by id
+app.put('/newclientrevenue/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   newClientRevenue= await  NewClientRevenue.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!newClientRevenue){
+            return res.status(404).json({message:`cannot find any  new Client Revenue with ${id}`})
+        }
+        const updatedNewClientRevenue = await  NewClientRevenue.findById(id);
+        res.status(200).json( updatedNewClientRevenue);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a new Client Revenue
+app.delete('/newclientrevenue/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   newClientRevenue = await  NewClientRevenue.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!newClientRevenue){
+            return res.status(404).json({message:`cannot find any New Client Revenue with ${id}`})
+        }
+        
+        res.status(200).json(newClientRevenue);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//Lead Report
+
+//to create a lead Report
+app.post('/leadreport',async(req,res)=>{
+    try{
+     const leadReport= await LeadReport.create(req.body)
+     res.status(200).json(leadReport);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get lead Report
+ app.get('/leadreport',async(req,res)=>{
+    try{
+        const  leadReport= await  LeadReport.find({});
+        res.status(200).json(leadReport);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get lead Report by id
+app.get('/leadreport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   leadReport = await  LeadReport.findById(id);
+        res.status(200).json( leadReport);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update lead Report by id
+app.put('/leadreport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   leadReport= await  LeadReport.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!leadReport){
+            return res.status(404).json({message:`cannot find any  lead Report with ${id}`})
+        }
+        const updatedLeadReport = await  LeadReport.findById(id);
+        res.status(200).json( updatedLeadReport);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a lead Report
+app.delete('/leadreport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   leadReport = await  LeadReport.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!leadReport){
+            return res.status(404).json({message:`cannot find any lead report with ${id}`})
+        }
+        
+        res.status(200).json(leadReport);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//Revenue Report
+
+//to create a revenue Report
+app.post('/revenuereport',async(req,res)=>{
+    try{
+     const revenueReport= await RevenueReport.create(req.body)
+     res.status(200).json(revenueReport);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get revenue Report
+ app.get('/revenuereport',async(req,res)=>{
+    try{
+        const  revenueReport= await  RevenueReport.find({});
+        res.status(200).json(revenueReport);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get revenuereport by id
+app.get('/revenuereport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   revenueReport = await  RevenueReport.findById(id);
+        res.status(200).json( revenueReport);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update revenue Report by id
+app.put('/revenuereport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   revenueReport= await  RevenueReport.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!revenueReport){
+            return res.status(404).json({message:`cannot find any revenue Report with ${id}`})
+        }
+        const updatedRevenueReport = await  RevenueReport.findById(id);
+        res.status(200).json( updatedRevenueReport);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a revenue Report
+app.delete('/revenuereport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   revenueReport = await  RevenueReport.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!revenueReport){
+            return res.status(404).json({message:`cannot find any revenue report with ${id}`})
+        }
+        
+        res.status(200).json(revenueReport);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+
+//Collection Report
+
+//total collection
+//to create a total collection
+app.post('/totalcollection',async(req,res)=>{
+    try{
+     const totalCollection= await TotalCollection.create(req.body)
+     res.status(200).json(totalCollection);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get total Collection
+ app.get('/totalcollection',async(req,res)=>{
+    try{
+        const  totalCollection= await  TotalCollection.find({});
+        res.status(200).json(totalCollection);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get total Collection by id
+app.get('/totalcollection/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   totalCollection = await  TotalCollection.findById(id);
+        res.status(200).json( totalCollection);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update total Collection by id
+app.put('/totalcollection/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   totalCollection= await  TotalCollection.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!totalCollection){
+            return res.status(404).json({message:`cannot find any total Collection with ${id}`})
+        }
+        const updatedTotalCollection = await  TotalCollection.findById(id);
+        res.status(200).json( updatedTotalCollection);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a total Collection
+app.delete('/totalcollection/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   totalCollection = await  TotalCollection.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!totalCollection){
+            return res.status(404).json({message:`cannot find any Total Collection with ${id}`})
+        }
+        
+        res.status(200).json(totalCollection);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//Payment Mode
+//to create a payment  mode
+app.post('/paymentmode',async(req,res)=>{
+    try{
+     const paymentmode= await PaymentMode.create(req.body)
+     res.status(200).json(paymentmode);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get payment Mode
+ app.get('/paymentmode',async(req,res)=>{
+    try{
+        const  paymentMode= await  PaymentMode.find({});
+        res.status(200).json(paymentMode);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get payment Mode by id
+app.get('/paymentmode/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   paymentMode = await  PaymentMode.findById(id);
+        res.status(200).json( paymentMode);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update payment Mode by id
+app.put('/paymentmode/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   paymentMode= await  PaymentMode.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!paymentMode){
+            return res.status(404).json({message:`cannot find any payment Mode with ${id}`})
+        }
+        const updatedPaymentMode = await  PaymentMode.findById(id);
+        res.status(200).json( updatedPaymentMode);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a payment Mode
+app.delete('/paymentmode/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   paymentMode = await  PaymentMode.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!paymentMode){
+            return res.status(404).json({message:`cannot find any Payment Mode with ${id}`})
+        }
+        
+        res.status(200).json(paymentMode);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+
+//Cash Report
+//to create a cash report
+app.post('/cashreport',async(req,res)=>{
+    try{
+     const cashReport= await CashReport.create(req.body)
+     res.status(200).json(cashReport);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get cash Report
+ app.get('/cashreport',async(req,res)=>{
+    try{
+        const  cashReport= await  CashReport.find({});
+        res.status(200).json(cashReport);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get cash report by id
+app.get('/cashreport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   cashReport = await  CashReport.findById(id);
+        res.status(200).json( cashReport);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update cash Report by id
+app.put('/cashreport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   cashReport= await  CashReport.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!cashReport){
+            return res.status(404).json({message:`cannot find any cash report with ${id}`})
+        }
+        const updatedCashReport = await  CashReport.findById(id);
+        res.status(200).json( updatedCashReport);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a cash report
+app.delete('/cashreport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   cashReport = await  CashReport.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!cashReport){
+            return res.status(404).json({message:`cannot find any cash Report with ${id}`})
+        }
+        
+        res.status(200).json(cashReport);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+
+//Cheque Report
+//to create a cheque report
+app.post('/chequereport',async(req,res)=>{
+    try{
+     const chequeReport= await ChequeReport.create(req.body)
+     res.status(200).json(chequeReport);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get cheque Report
+ app.get('/chequereport',async(req,res)=>{
+    try{
+        const  chequeReport= await  ChequeReport.find({});
+        res.status(200).json(chequeReport);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get cheque report by id
+app.get('/chequereport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   chequeReport = await  ChequeReport.findById(id);
+        res.status(200).json( chequeReport);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update cheque Report by id
+app.put('/chequereport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   chequeReport= await  ChequeReport.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!chequeReport){
+            return res.status(404).json({message:`cannot find any cheque report with ${id}`})
+        }
+        const updatedChequeReport = await  ChequeReport.findById(id);
+        res.status(200).json( updatedChequeReport);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a cheque Report
+app.delete('/chequereport/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   chequeReport = await  ChequeReport.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!chequeReport){
+            return res.status(404).json({message:`cannot find any Cheque Report with ${id}`})
+        }
+        
+        res.status(200).json(chequeReport);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//Expense
+
+//Center Expense
+//to create a center expense
+app.post('/centerexpense',async(req,res)=>{
+    try{
+     const centerExpense= await CenterExpense.create(req.body)
+     res.status(200).json(centerExpense);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get center Expense
+ app.get('/centerexpense',async(req,res)=>{
+    try{
+        const  centerExpense= await  CenterExpense.find({});
+        res.status(200).json(centerExpense);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get center Expense by id
+app.get('/centerexpense/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   centerExpense = await  CenterExpense.findById(id);
+        res.status(200).json( centerExpense);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update center Expense by id
+app.put('/centerexpense/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   centerExpense= await  CenterExpense.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!centerExpense){
+            return res.status(404).json({message:`cannot find any center Expense with ${id}`})
+        }
+        const updatedCenterExpense = await  CenterExpense.findById(id);
+        res.status(200).json( updatedCenterExpense);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a center Expense
+app.delete('/centerexpense/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   centerExpense = await  CenterExpense.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!centerExpense){
+            return res.status(404).json({message:`cannot find any Center Expense with ${id}`})
+        }
+        
+        res.status(200).json(centerExpense);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//Daily Expense
+//to create a daily expense
+app.post('/dailyexpense',async(req,res)=>{
+    try{
+     const dailyExpense= await DailyExpense.create(req.body)
+     res.status(200).json(dailyExpense);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get daily Expense
+ app.get('/dailyexpense',async(req,res)=>{
+    try{
+        const  dailyExpense= await  DailyExpense.find({});
+        res.status(200).json(dailyExpense);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get daily Expense by id
+app.get('/dailyexpense/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   dailyExpense = await  DailyExpense.findById(id);
+        res.status(200).json( dailyExpense);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update daily Expense by id
+app.put('/dailyexpense/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   dailyExpense= await  DailyExpense.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!dailyExpense){
+            return res.status(404).json({message:`cannot find any Daily Expense with ${id}`})
+        }
+        const updatedDailyExpense = await  DailyExpense.findById(id);
+        res.status(200).json( updatedDailyExpense);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a daily Expense
+app.delete('/dailyexpense/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   dailyExpense = await  DailyExpense.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!dailyExpense){
+            return res.status(404).json({message:`cannot find any Daily Expense with ${id}`})
+        }
+        
+        res.status(200).json(dailyExpense);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//Petty Cash
+//to create a petty cash
+app.post('/pettycash',async(req,res)=>{
+    try{
+     const pettyCash= await PettyCash.create(req.body)
+     res.status(200).json(pettyCash);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get petty Cash
+ app.get('/pettyCash',async(req,res)=>{
+    try{
+        const  pettyCash= await  PettyCash.find({});
+        res.status(200).json(pettyCash);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get petty Cash by id
+app.get('/pettycash/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   pettyCash = await  PettyCash.findById(id);
+        res.status(200).json( pettyCash);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update petty Cash by id
+app.put('/pettycash/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   pettyCash= await  PettyCash.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!pettyCash){
+            return res.status(404).json({message:`cannot find any petty Cash with ${id}`})
+        }
+        const updatedPettyCash = await  PettyCash.findById(id);
+        res.status(200).json( updatedPettyCash);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a petty cash
+app.delete('/pettycash/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   pettyCash = await  PettyCash.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!pettyCash){
+            return res.status(404).json({message:`cannot find any Petty Cash with ${id}`})
+        }
+        
+        res.status(200).json(pettyCash);
         
     }catch(error){
         res.status(500).json({message:error.message})
