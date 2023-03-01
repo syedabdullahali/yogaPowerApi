@@ -2,6 +2,7 @@ const express=require('express')
 const mongoose=require('mongoose')
 const app = express();
 var cors = require('cors')
+const userValidate = require('./Routes/jwt')
 app.use(cors())
 
 const DailyAttendence=require('./Trainer/LiveClasses/dailyAttendence')
@@ -4942,7 +4943,7 @@ app.delete('/pettycash/:id',async(req,res)=>{
     }
 })
 
-
+app.use('/enquiryForm', userValidate, require('./Routes/enquiryForm'));
 
 mongoose.set("strictQuery",false)
 mongoose.connect('mongodb+srv://admin:Sunny2798@sunnyapi.kndypoa.mongodb.net/Node-API?retryWrites=true&w=majority')
