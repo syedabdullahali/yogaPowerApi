@@ -21,6 +21,7 @@ const AllMembersClientAttendenceReg=require('./Trainer/AllMembers/allMembersClie
 //calender
 const Calender=require('./Calender/calender')
 //Employee target
+const AllCalls=require('./Employee/allCalls')
 const SalesTarget=require('./Employee/EmployeeTarget/salesTarget')
 const ClientTarget=require('./Employee/EmployeeTarget/clientTarget')
 const CallsTarget=require('./Employee/EmployeeTarget/callsTarget')
@@ -5008,7 +5009,85 @@ app.delete('/pettycash/:id',async(req,res)=>{
     }
 })
 
-app.use('/enquiryForm', userValidate, require('./Routes/enquiryForm'));
+
+
+//All Calls
+//to create all calls
+app.post('/allcalls',async(req,res)=>{
+    try{
+     const allCalls= await AllCalls.create(req.body)
+     res.status(200).json(allCalls);
+    }catch (error) {
+     console.log(error.message);
+     res.status(500).json({message:error.message})
+    }
+ })
+
+ //to get all calls
+ app.get('/allcalls',async(req,res)=>{
+    try{
+        const  allCalls= await  AllCalls.find({});
+        res.status(200).json(allCalls);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+//to  get all calls by id
+app.get('/allcalls/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   allCalls = await  AllCalls.findById(id);
+        res.status(200).json( allCalls);
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+//to update all calls by id
+app.put('/allcalls/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   allCalls= await  AllCalls.findByIdAndUpdate(id, req.body);
+        //we cannot find any product in database
+        if(!allCalls){
+            return res.status(404).json({message:`cannot find any all Calls with ${id}`})
+        }
+        const updatedAllCalls= await  AllCalls.findById(id);
+        res.status(200).json( updatedAllCalls);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+// delete a all calls
+app.delete('/allcalls/:id',async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const   allCalls = await  AllCalls.findByIdAndDelete(id, req.body);
+        //we cannot find any product in database
+        if(!allCalls){
+            return res.status(404).json({message:`cannot find any all calls with ${id}`})
+        }
+        
+        res.status(200).json(allCalls);
+        
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
 
 mongoose.set("strictQuery",false)
 mongoose.connect('mongodb+srv://admin:Sunny2798@sunnyapi.kndypoa.mongodb.net/Node-API?retryWrites=true&w=majority')
