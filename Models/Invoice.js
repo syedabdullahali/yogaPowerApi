@@ -28,6 +28,47 @@ let Invoice = new mongoose.Schema({
     cancelledBy: String,
     reason: String,
     status: String,
+    Array:[
+        {
+            RemainingAmount: {
+                type: String,
+                required: true
+            },
+            PaidAmount: {
+                type: String,
+                required: true
+            },
+            Previous: {
+                type: String,
+                required: true
+            },
+            NewSlipDate: {
+                type: String,
+                required: true
+            },
+            Status: {
+                type: Boolean,
+                required: true
+            },
+            AfterPayremainingAmount: {
+                type: String,
+                required: true
+            },
+            SlipNo: {
+                type: String,
+                required: true
+            },
+            CasherName: {
+                type: String,
+                required: true
+            },
+            Mobile_No: {
+                type: String,
+                required: true
+            }
+      }
+      
+      ]
 }, { timestamps: true })
 
 module.exports = mongoose.model('Invoice', Invoice);
