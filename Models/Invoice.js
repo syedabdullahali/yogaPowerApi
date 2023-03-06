@@ -65,6 +65,10 @@ let Invoice = new mongoose.Schema({
             Mobile_No: {
                 type: String,
                 required: true
+            },
+            Pay_Mode: {
+                type: String,
+                required: true
             }
       }
       
