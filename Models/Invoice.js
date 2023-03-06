@@ -38,7 +38,7 @@ let Invoice = new mongoose.Schema({
                 type: String,
                 required: true
             },
-            Previous: {
+            Counseller: {
                 type: String,
                 required: true
             },
