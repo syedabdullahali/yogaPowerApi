@@ -31,6 +31,7 @@ let allClients = new mongoose.Schema({
     }],
     Traning: String,
     Status: String,
+    ClientId: String
 }, { timestamps: true })
 
 module.exports = mongoose.model('allClients', allClients);
