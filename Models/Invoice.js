@@ -28,6 +28,7 @@ let Invoice = new mongoose.Schema({
     cancelledBy: String,
     reason: String,
     status: String,
+    commentsofwrite:String,
     Receipts:[
         {
             RemainingAmount: {
