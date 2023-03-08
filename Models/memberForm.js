@@ -65,6 +65,7 @@ let memberFroms = new mongoose.Schema({
     comments: String,
     plan: Boolean,
     status: String,
+    ClientId:String
 }, { timestamps: true })
 
 module.exports = mongoose.model('memberFroms', memberFroms);
