@@ -38,6 +38,10 @@ const packageMasterSchema = mongoose.Schema(
             type: String,
             required: true
         },
+        Days: {
+            type: String,
+            required: true
+        },
         
     },
 )
