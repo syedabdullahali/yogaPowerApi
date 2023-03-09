@@ -67,6 +67,7 @@ let memberFroms = new mongoose.Schema({
     status: String,
     ClientId:String,
     duration:String,
+    renewed:Boolean,
 }, { timestamps: true })
 
 module.exports = mongoose.model('memberFroms', memberFroms);
