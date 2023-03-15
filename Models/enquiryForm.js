@@ -32,7 +32,8 @@ let enquiryForms = new mongoose.Schema({
     trialDate: Date,
     trialTime: String,
     Counseller: String,
-    status: String
+    status: String,
+    enquirestatus:String,
 }, { timestamps: true })
 
 module.exports = mongoose.model('enquiryForms', enquiryForms);
