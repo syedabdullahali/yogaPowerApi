@@ -10,6 +10,7 @@ let employeeForms = new mongoose.Schema({
     whatsappNumber: Number,
     Gender: String,
     DateofBirth: Date,
+    Age:String,
     address: String,
     Area: String,
     city: String,

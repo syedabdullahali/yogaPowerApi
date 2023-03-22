@@ -32,7 +32,6 @@ let Invoice = new mongoose.Schema({
     typesofdiscount:String,
     clientId:String,
     upgrade:Boolean,
-    
     Receipts:[
         {
             RemainingAmount: {
