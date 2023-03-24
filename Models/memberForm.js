@@ -1,5 +1,6 @@
 
-let mongoose = require('mongoose')
+let mongoose = require('mongoose');
+const Package = require('./Package');
 
 let memberFroms = new mongoose.Schema({
     username: String,
@@ -68,6 +69,9 @@ let memberFroms = new mongoose.Schema({
     ClientId:String,
     duration:String,
     renewed:Boolean,
+    trainerName:String,
+    batchTime:String,
+    package:String
 }, { timestamps: true })
 
 module.exports = mongoose.model('memberFroms', memberFroms);
