@@ -18,7 +18,13 @@ let clientAttentance = new mongoose.Schema({
     checkIn: String,
     checkOut: String,
     batches:String,
-    category:String
+    category:String,
+    package:String,
+    days:String,
+    startDate:String,
+    endDate:String,
+    classTiming:String,
+    contact:Number
 }, { timestamps: true })
 
 module.exports = mongoose.model('clientAttentance', clientAttentance);
