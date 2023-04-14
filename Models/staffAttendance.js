@@ -11,6 +11,11 @@ let staffAttentance = new mongoose.Schema({
     checkDate: Date,
     checkIn: String,
     checkOut: String,
+    ContactNo: String,
+    Department: String,
+    Designation: String,
+    EmployeeCategory: String,
+    joiningDate: String
 }, { timestamps: true })
 
 module.exports = mongoose.model('staffAttentance', staffAttentance);
