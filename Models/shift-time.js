@@ -10,6 +10,12 @@ const shiftTimeSchema=new mongoose.Schema({
      },
      endTime:{
         type:Date
+     },
+     username:{
+        type:String
+     },
+     centerCode:{
+        type:String
      }
 })
 
