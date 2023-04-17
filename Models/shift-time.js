@@ -12,11 +12,10 @@ const shiftTimeSchema=new mongoose.Schema({
         type:Date
      },
      username:{
-        type:Schema.Types.ObjectId
-        ref:
+          type:String
      },
      centercode:{
-        ref:sSchema.Types.ObjectId
+          type:String
      }
 })
 
