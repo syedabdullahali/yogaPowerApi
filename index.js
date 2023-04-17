@@ -167,7 +167,7 @@ app.use('/emailsms', userValidate, require('./Routes/emailSender'));
 
 
 //admin router
-const adminRoute=require('./Routes/shirf-time')
+const adminRoute=require('./Routes/shift-time')
 app.use('/',adminRoute)
 
 
