@@ -9,6 +9,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
+const port=process.env.PORT||8000
+
 
 const DailyAttendence=require('./Trainer/LiveClasses/dailyAttendence')
 const MonthlyReport=require('./Trainer/LiveClasses/monthlyReport')
@@ -5100,8 +5102,8 @@ mongoose.set("strictQuery",false)
 mongoose.connect('mongodb+srv://admin:Sunny2798@sunnyapi.kndypoa.mongodb.net/Node-API?retryWrites=true&w=majority')
 .then(() =>{
     console.log('connected to MongoDB')
-    app.listen(3000,()=>{
-        console.log('Node api is running on port 3000')
+    app.listen(port,()=>{
+        console.log('Node api is running on port', port)
     })
 }).catch((error) =>{
     console.log(error)
