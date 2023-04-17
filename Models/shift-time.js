@@ -10,7 +10,7 @@ const shiftTimeSchema=new mongoose.Schema({
      },
      endTime:{
         type:Date
-     }
+     },
      username:{
         type:Schema.Types.ObjectId
         ref:
