@@ -7,12 +7,9 @@ const ShiftTimeModel = require('../Models/shift-time')
 const jwtMiddleware = require('../Routes/jwt')
 
 
-router.get('/admin', async(req,resp)=>{
- resp.json({success:true, message:'THIS IS ADMIN ROUTE OF YOG POWER'})
-})
 
 //POST ROUTE
-router.post('/shit-time-management', async (req, resp) => {
+router.post('/shit-time-management', jwtMiddleware, async (req, resp) => {
     const newEntry = await ShiftTimeModel.create(req.body)
     resp.json({ success: true, message: 'Data saved successfully', newEntry: newEntry })
 })
