@@ -13,5 +13,5 @@ const shiftTimeSchema=new mongoose.Schema({
      }
 })
 
-const shiftTimeModel=mongoose.modal('shift-time-schedule', shiftTimeSchema)
+const shiftTimeModel=mongoose.model('shift-time-schedule', shiftTimeSchema)
 module.exports=shiftTimeModel
