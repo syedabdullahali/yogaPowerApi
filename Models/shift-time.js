@@ -11,13 +11,13 @@ const shiftTimeSchema=new mongoose.Schema({
      endTime:{
         type:Date
      }
-    //  username:{
-    //     type:Schema.Types.ObjectId
-    //     ref:
-    //  },
-    //  centercode:{
-    //     ref:sSchema.Types.ObjectId
-    //  }
+     username:{
+        type:Schema.Types.ObjectId
+        ref:
+     },
+     centercode:{
+        ref:sSchema.Types.ObjectId
+     }
 })
 
 const shiftTimeModel=mongoose.modal('shift-time-schedule', shiftTimeSchema)
