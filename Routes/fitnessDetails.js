@@ -23,7 +23,7 @@ router.post('/create', async (req, res) => {
     }
 });
 
-router.get('/:id', async function (req, res) {
+router.delete('/:id', async function (req, res) {
     try {
         const response = await fitnessDetails.findById({ _id: req.params.id })
         return res.status(200).json(response);
