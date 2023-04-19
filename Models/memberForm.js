@@ -71,7 +71,8 @@ let memberFroms = new mongoose.Schema({
     renewed:Boolean,
     trainerName:String,
     batchTime:String,
-    package:String
+    package:String,
+    ClientReferenceName:String,
 }, { timestamps: true })
 
 module.exports = mongoose.model('memberFroms', memberFroms);
