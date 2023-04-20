@@ -32,7 +32,10 @@ const UpgradeCallsSchema = mongoose.Schema(
         Counseller: {
             type: String,
         },
-    },
+        Member_Id:{
+            type:String
+        }
+    }
 )
 
 const UpgradeCalls = mongoose.model('UpgradeCalls', UpgradeCallsSchema);
