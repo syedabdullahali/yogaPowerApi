@@ -32,9 +32,6 @@ const UpgradeCallsSchema = mongoose.Schema(
         Counseller: {
             type: String,
         },
-        Status:{
-            type: String, 
-        }
     },
 )
 
