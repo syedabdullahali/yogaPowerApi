@@ -1,6 +1,8 @@
 let mongoose = require('mongoose')
 
 let Invoice = new mongoose.Schema({
+    callTimeing:String,
+    Discussion:String,
     username: String,
     date: Date,
     centerName: String,
