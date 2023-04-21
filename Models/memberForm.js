@@ -74,10 +74,10 @@ let memberFroms = new mongoose.Schema({
     package:String,
     ClientReferenceName:String,
     welcomeCallInfo:{
-            wellComeCallTimeing:'',
-            wellComeCallDiscussion:'',
-            wellComeCallFollowupby:'',
-            wellComeCallFollowUpDate:''
+            wellComeCallTimeing:String,
+            wellComeCallDiscussion:String,
+            wellComeCallFollowupby:String,
+            wellComeCallFollowUpDate:String
     ]
 }, { timestamps: true })
 
