@@ -6,6 +6,7 @@ let Invoice = new mongoose.Schema({
     contact:Number,
     CountryCode:String,
     followupby:String,
+    followUpDate:Date,
     username: String,
     date: Date,
     centerName: String,
