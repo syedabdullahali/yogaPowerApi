@@ -78,7 +78,7 @@ let memberFroms = new mongoose.Schema({
             wellComeCallDiscussion:String,
             wellComeCallFollowupby:String,
             wellComeCallFollowUpDate:String
-    ]
+    }
 }, { timestamps: true })
 
 module.exports = mongoose.model('memberFroms', memberFroms);
