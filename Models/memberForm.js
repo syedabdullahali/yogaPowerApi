@@ -73,6 +73,12 @@ let memberFroms = new mongoose.Schema({
     batchTime:String,
     package:String,
     ClientReferenceName:String,
+    welcomeCallInfo:{
+            wellComeCallTimeing:'',
+            wellComeCallDiscussion:'',
+            wellComeCallFollowupby:'',
+            wellComeCallFollowUpDate:''
+    ]
 }, { timestamps: true })
 
 module.exports = mongoose.model('memberFroms', memberFroms);
