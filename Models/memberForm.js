@@ -84,6 +84,12 @@ let memberFroms = new mongoose.Schema({
         feedBackCallDiscussion:String,
         feedBackCallFollowupby:String,
         feedBackCallFollowUpDate:String
+    },
+    welcomeCallInfo:{
+        greetingCallTiming:String,
+        greetingDiscussion:String,
+        greetingFollowupby:String,
+        greetingFollowUpDate:String
     }    
 }, { timestamps: true })
 
