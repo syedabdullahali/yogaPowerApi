@@ -27,7 +27,13 @@ let clientAttentance = new mongoose.Schema({
     contact:Number,
     admissionBatch:String,
     admissionPackageName:String,
-    admissionDuration:String
+    admissionDuration:String,
+    attentanceCallingInfo:{
+        callTimeing:String,
+        discussion:String,
+        followupby:String,
+        followUpDate:String
+    }
 }, { timestamps: true })
 
 module.exports = mongoose.model('clientAttentance', clientAttentance);
