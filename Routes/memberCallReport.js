@@ -1,20 +1,19 @@
-const express = require('express');
-const DietDetails = require('../Models/DietDetails');
+const express = require('express')
 const router = express.Router()
 //modelName
+const memberCallReport = require('../Models/MemBerCallReport')
 
 router.get('/all', async function (req, res) {
     try {
-        const response = await DietDetails.find()
+        const response = await memberCallReport.find()
         return res.status(200).json(response);
     } catch (err) {
         return res.status(500).json({ error: err })
     }
 })
-
 router.post('/create', async (req, res) => {
     try {
-        const temp = await new DietDetails(req.body)
+        const temp = await new memberCallReport(req.body)
         const response = await temp.save();
         console.log(response);
         return res.status(200).json(response);
@@ -25,7 +24,7 @@ router.post('/create', async (req, res) => {
 
 router.get('/:id', async function (req, res) {
     try {
-        const response = await DietDetails.findById({ _id: req.params.id })
+        const response = await memberCallReport.findById({ _id: req.params.id })
         return res.status(200).json(response);
     } catch (err) {
         return res.status(500).json({ error: err })
@@ -34,18 +33,16 @@ router.get('/:id', async function (req, res) {
 
 router.post('/update/:id', async (req, res) => {
     try {
-        const response = await DietDetails.findByIdAndUpdate(req.params.id, req.body);
+        const response = await memberCallReport.findByIdAndUpdate(req.params.id, req.body);
         return res.status(200).json(response)
     } catch (err) {
         return res.status(500).json({ error: err })
     }
 })
 
-
-
 router.delete('/delete/:id', async (req, res) => {
     try {
-        const response = await DietDetails.findByIdAndDelete(req.params.id);
+        const response = await memberCallReport.findByIdAndDelete(req.params.id);
         return res.status(200).json(response)
     } catch (err) {
         return res.status(500).json({ error: err })
@@ -53,3 +50,4 @@ router.delete('/delete/:id', async (req, res) => {
 })
 
 module.exports = router
+

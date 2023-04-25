@@ -9,6 +9,7 @@ let allClients = new mongoose.Schema({
         type: Number,
         unique: true,
     },
+    
     Invoice: Number,
     AttendanceId: {
         type: String,
