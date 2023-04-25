@@ -124,8 +124,6 @@ const PettyCash = require('./Finance/Expense/pettyCash');
 app.use(express.json())
 
 app.use('/enquiryForm', userValidate, require('./Routes/enquiryForm'));
-app.use('/memberCallReport', userValidate, require('./Routes/memberCallReport'));
-
 
 //ROUTES 
 app.use('/signup', require('./Routes/signup'));
@@ -172,7 +170,7 @@ app.use('/templateMaster', userValidate, require('./Routes/templateMaster'));
 app.use('/expenseMaster', userValidate, require('./Routes/expenseMaster'));
 app.use('/invoice', userValidate, require('./Routes/Invoice'));
 app.use('/emailsms', userValidate, require('./Routes/emailSender'));
-
+app.use('/memberCallReport', userValidate, require('./Routes/memberCallReport'));
 
 
 
