@@ -124,7 +124,7 @@ const PettyCash = require('./Finance/Expense/pettyCash');
 app.use(express.json())
 
 app.use('/enquiryForm', userValidate, require('./Routes/enquiryForm'));
-app.use('/member-Callreport', userValidate, require('./Routes/memberCallReport'));
+app.use('/memberCallReport', userValidate, require('./Routes/memberCallReport'));
 
 
 //ROUTES 
