@@ -7,6 +7,7 @@ let memBerCallReports = new mongoose.Schema({
     callDiscussion:String,
     callFollowupby:String,
     callFollowUpDate:Date,
+    typeOfCall:String
 }, { timestamps: true })
 
 
