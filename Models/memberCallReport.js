@@ -1,13 +1,13 @@
 let mongoose = require('mongoose')
 const Package = require('./Package');
 
-let memBerCallReport = new mongoose.Schema({
+let memBerCallReports = new mongoose.Schema({
     username: String,
-    callTimeing:String,
+    callTimeing: String,
     callDiscussion:String,
     callFollowupby:String,
-    callFollowUpDate:String
+    callFollowUpDate:Date,
 }, { timestamps: true })
 
 
-module.exports =   mongoose.model('memBerCallReport', memBerCallReport);
+module.exports =   mongoose.model('memBerCallReports', memBerCallReports);
