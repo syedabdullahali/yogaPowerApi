@@ -75,24 +75,30 @@ let memberFroms = new mongoose.Schema({
     package:String,
     ClientReferenceName:String,
     EmployeeId:String,
-    welcomeCallInfo:{
+    welcomeCallInfo:[
+         {
             wellComeCallTimeing:String,
             wellComeCallDiscussion:String,
             wellComeCallFollowupby:String,
             wellComeCallFollowUpDate:String
-    },
-    feedBackCallInfo:{
+         }
+    ],
+    feedBackCallInfo:[
+         {
         feedBackCallTimeing:String,
         feedBackCallDiscussion:String,
         feedBackCallFollowupby:String,
         feedBackCallFollowUpDate:String
-    },
-     greetingCallInfo:{
+         }
+        ],
+     greetingCallInfo:[
+          {
         greetingCallTiming:String,
         greetingDiscussion:String,
         greetingFollowupby:String,
         greetingFollowUpDate:String
-    }    
+         }
+       ]  
 }, { timestamps: true })
 
 module.exports = mongoose.model('memberFroms', memberFroms);
