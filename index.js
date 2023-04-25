@@ -124,7 +124,7 @@ const PettyCash = require('./Finance/Expense/pettyCash');
 app.use(express.json())
 
 app.use('/enquiryForm', userValidate, require('./Routes/enquiryForm'));
-app.use('/memberCallreport', userValidate, require('./Routes/memberCallReport'));
+// app.use('/memberCallreport', userValidate, require('./Routes/memberCallReport'));
 
 
 //ROUTES 
@@ -179,19 +179,6 @@ app.use('/emailsms', userValidate, require('./Routes/emailSender'));
 //admin router
 const adminRoute=require('./Routes/shift-time')
 app.use('/',adminRoute)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //Trainer
 
