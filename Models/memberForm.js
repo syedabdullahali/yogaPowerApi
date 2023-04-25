@@ -9,6 +9,7 @@ let memberFroms = new mongoose.Schema({
     CountryCode: String,
     ContactNumber: Number,
     WhatsappNumber: Number,
+    renewedDate:Date,
     Email: String,
     Gender: String,
     DateofBirth: Date,
