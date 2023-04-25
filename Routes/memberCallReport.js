@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-//modelName
+
 const memberCallReport = require('../Models/memBerCallReport')
 
 router.get('/all', async function (req, res) {
