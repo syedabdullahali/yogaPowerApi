@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const memberCallReport = require('../Models/memBerCallReports')
+const memberCallReport = require('../Models/memberCallReport')
 
 router.get('/all', async function (req, res) {
     try {
