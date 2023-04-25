@@ -11,6 +11,7 @@ let Invoice = new mongoose.Schema({
     date: Date,
     centerName: String,
     MemberId: String,
+    EmployeeId:String,
     MemberName: String,
     InvoiceNo: String,
     ServiceName: String,
