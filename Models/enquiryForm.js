@@ -37,7 +37,9 @@ let enquiryForms = new mongoose.Schema({
     enquirestatus:String,
     ClientReferenceName:String,
     EmployeeId:String,
-    enquiryConvertedDate:Date
+    enquiryConvertedDate:Date,
+    invEmployeeId:String,
+    invEmployeeName:String
 }, { timestamps: true })
 
 module.exports = mongoose.model('enquiryForms', enquiryForms);
