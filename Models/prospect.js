@@ -19,6 +19,7 @@ let prospect = new mongoose.Schema({
     enquiryStage: String,
     typeOfCall: String,
     status: String,
+    EmployeeId:String,
 }, { timestamps: true })
 
 module.exports = mongoose.model('prospect', prospect);
