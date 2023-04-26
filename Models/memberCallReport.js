@@ -12,6 +12,7 @@ let memBerCallReports = new mongoose.Schema({
     memberId:String,
     clientName:String,
     phone:Number,
+    empolyeeId:String
 }, { timestamps: true })
 
 
