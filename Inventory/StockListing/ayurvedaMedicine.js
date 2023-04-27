@@ -5,6 +5,9 @@ const AyurvedaMedicineSchema = mongoose.Schema(
         Sr_No: {
             type: String
         },
+        username: {
+            type: String
+        },
         Product_Code: {
             type: String
         },
