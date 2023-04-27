@@ -3,52 +3,40 @@ const mongoose = require('mongoose')
 const AyurvedaMedicineSchema = mongoose.Schema(
     {
         Sr_No: {
-            type: String,
-            required: true,
+            type: String
         },
         Product_Code: {
-            type: String,
-            required: true,
+            type: String
         },
         Product_Name: {
-            type: String,
-            required: true
+            type: String
         },
         Brand_Name: {
-            type: String,
-            required: true
+            type: String
         },
         Category: {
-            type: String,
-            required: true
+            type: String
         },
         Quantity: {
-            type: String,
-            required: true
+            type: String
         },
         Price: {
-            type: String,
-            required: true
+            type: String
         },
         Total_Stock: {
-            type: String,
-            required: true
+            type: String
         },
         Sold: {
-            type: String,
-            required: true
+            type: String
         },
         Available_Stock: {
-            type: String,
-            required: true
+            type: String
         },
         Sold_By: {
-            type: String,
-            required: true
+            type: String
         },
         Action: {
-            type: String,
-            required: true
+            type: String
         },
     },
 )
