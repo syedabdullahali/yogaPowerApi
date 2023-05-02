@@ -3,56 +3,43 @@ const mongoose = require('mongoose')
 const ProductSalesReportSchema = mongoose.Schema(
     {
         Sr_No: {
-            type: String,
-            required: true,
+            type: String
         },
         Date: {
-            type: String,
-            required: true,
+            type: Date
         },
         Client_Name: {
-            type: String,
-            required: true,
+            type: String
         },
         Mobile_No: {
-            type: String,
-            required: true,
+            type: String
         },
         Product_Code: {
-            type: String,
-            required: true,
+            type: String
         },
         Product_Name: {
-            type: String,
-            required: true
+            type: String
         },
         Brand_Name: {
-            type: String,
-            required: true
+            type: String
         },
         Category: {
-            type: String,
-            required: true
+            type: String
         },
         Color: {
-            type: String,
-            required: true
+            type: String
         },
         Price: {
-            type: String,
-            required: true
+            type: String
         },
         Quantity: {
-            type: String,
-            required: true
+            type: String
         },
         Sold_By: {
-            type: String,
-            required: true
+            type: String
         },
         Total_Invoice: {
-            type: String,
-            required: true
+            type: String
         },
         
     },
