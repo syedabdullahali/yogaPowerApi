@@ -111,6 +111,9 @@ let Invoice = new mongoose.Schema({
    },    
    Available_Stock:{
       type: String,
+   },
+   item:{
+        type: String,
    }    
    }
   
