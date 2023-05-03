@@ -81,9 +81,40 @@ let Invoice = new mongoose.Schema({
                 type: String,
                 required: true
             }
-      }
-      
-      ]
+      },
+      ],
+ Inventory: {
+  type: Boolean,
+ },
+  InventoryStock:[
+   {
+    Product_Code:{
+      type: String,
+   },
+   Product_Name:{
+      type: String,
+   },
+   Brand_Name:{
+      type: String,
+   },
+    Category:{
+      type: String,
+   },
+    Color:{
+      type: String,
+   },
+   Price:{
+      type: String,
+   },
+    Total_Stock:{
+      type: String,
+   },    
+   Available_Stock:{
+      type: String,
+   }    
+   }
+  
+  ]
 }, { timestamps: true })
 
 module.exports = mongoose.model('Invoice', Invoice);
