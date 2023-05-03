@@ -35,6 +35,9 @@ const GenerelProductSchema = mongoose.Schema(
         AllotTo: {
             type: String,
         },
+        username:{
+           type: String,
+        }
     },
 )
 
