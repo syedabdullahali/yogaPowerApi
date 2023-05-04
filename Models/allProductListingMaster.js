@@ -9,7 +9,8 @@ let allProductListingMaster = new mongoose.Schema({
     category:String,
     productPrize:String,
     ordersQty:String,
-    
+    Kg:String,
+    Color:String
 }, { timestamps: true })
 
 
