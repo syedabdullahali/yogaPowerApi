@@ -34,6 +34,9 @@ const StockOrderListSchema = mongoose.Schema(
         },
         EmployeeId:{
              type: String,
+        },
+        Color:{
+             type: String,
         }
     },
 )
