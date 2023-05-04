@@ -17,7 +17,6 @@ router.post('/create', async (req, res) => {
 
         const temp = await new prospect(req.body)
         const response = await temp.save();
-        // const response = await Batch.insertMany(salesclosureData)
         console.log(response);
         return res.status(200).json(response);
     } catch (err) {

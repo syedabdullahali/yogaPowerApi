@@ -171,7 +171,7 @@ app.use('/expenseMaster', userValidate, require('./Routes/expenseMaster'));
 app.use('/invoice', userValidate, require('./Routes/Invoice'));
 app.use('/emailsms', userValidate, require('./Routes/emailSender'));
 app.use('/memberCallReport', userValidate, require('./Routes/memberCallReport'));
-
+app.use('/allProductListingMaster', userValidate, require('./Routes/allProductListingMaster'));
 
 
 //admin router

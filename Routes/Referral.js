@@ -25,7 +25,6 @@ router.post('/create', async (req, res) => {
     try {
         const temp = await new Referrals(req.body)
         const response = await temp.save();
-        // const response = await Referrals.insertMany(salesclosureData)
         console.log(response);
         return res.status(200).json(response);
     } catch (err) {
