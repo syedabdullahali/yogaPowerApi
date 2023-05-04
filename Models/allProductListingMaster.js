@@ -1,17 +1,13 @@
 let mongoose = require('mongoose')
 
 let allProductListingMaster = new mongoose.Schema({
-    username: String,
-    callTimeing: String,
-    callDiscussion:String,
-    callFollowupby:String,
-    callFollowUpDate:Date,
-    typeOfCall:String,
-    clientId:String,
-    memberId:String,
-    clientName:String,
-    phone:Number,
-    empolyeeId:String
+    sataus:Boolean,
+    productCategory:String,
+    productName:String,
+    brandName:String,
+    category:String,
+    productPrize:Stirng,
+    ordersQty:String,    
 }, { timestamps: true })
 
 
