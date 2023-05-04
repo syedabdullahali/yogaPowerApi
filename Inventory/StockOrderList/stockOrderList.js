@@ -31,6 +31,9 @@ const StockOrderListSchema = mongoose.Schema(
         },
         EmployeeName:{
             type: String,
+        },
+        EmployeeId:{
+             type: String,
         }
     },
 )
