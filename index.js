@@ -2229,6 +2229,8 @@ app.post('/productsalesreport',async(req,res)=>{
     }
  })
 
+
+
  //to get Product sales report
  app.get('/productsalesreport',async(req,res)=>{
     try{
@@ -2508,6 +2510,20 @@ app.post('/stockorderlist',async(req,res)=>{
         res.status(200).json( stockOrderList);
     }catch(error){
         res.status(5009).json({message:error.message})
+    }
+})
+
+
+
+app.get('/stockorderlist-status-received', async(req, res) => {
+    try{
+        const receivedStockList = await StockOrderList.find({Status: "Recevied"})
+        res.json({
+            data: receivedStockList
+        })
+    }
+    catch(err){
+        res.status(500).json({message:err.message})
     }
 })
 
