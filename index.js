@@ -2514,6 +2514,31 @@ app.post('/stockorderlist',async(req,res)=>{
 })
 
 
+app.get('/stockorderlist-status-received-stock', async(req, res) => {
+    try{
+        const receivedStockList = await StockOrderList.find({Status: "Recevied"})
+        const map = new Map();
+        for(let i=0; i<receivedStockList.length; i++){
+            if(!map.has(receivedStockList[i].ProductId)){
+                map.set(receivedStockList[i].ProductId, {['productName']: receivedStockList[i].Product_Name, ['productTotalQuantity']: parseInt(receivedStockList[i].Orders_Quantity), ['productDetails']: receivedStockList[i]});
+            }
+            else{
+                map.set(receivedStockList[i].ProductId, {['productName']: receivedStockList[i].Product_Name, 
+                ['productTotalQuantity']: map.get(receivedStockList[i].ProductId).productTotalQuantity + parseInt(receivedStockList[i].Orders_Quantity),
+                ['productDetails']: receivedStockList[i]})
+            }
+        }
+        let arr = [];
+        for(let values of map.values()){
+            arr.push(values)
+        }
+        res.json({ data: arr })
+    }
+    catch(err){
+        res.status(500).json({message:err.message})
+    }
+})
+
 
 app.get('/stockorderlist-status-received', async(req, res) => {
     try{
