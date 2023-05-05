@@ -48,7 +48,10 @@ const StockOrderListSchema = mongoose.Schema(
         type: String
        },
        receiverId:{
-          type: String
+        type: String
+      },
+      ProductId:{
+        type: String
       }
     },
 )
