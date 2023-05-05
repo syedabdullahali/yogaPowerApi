@@ -37,6 +37,9 @@ const StockOrderListSchema = mongoose.Schema(
         },
         Color:{
              type: String,
+        },
+        Status:{
+           type: String,
         }
     },
 )
