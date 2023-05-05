@@ -40,7 +40,13 @@ const StockOrderListSchema = mongoose.Schema(
         },
         Status:{
            type: String,
-        }
+        },
+        receivedDate:{
+            type:Date
+        },
+        receivedBy:{
+        type: String
+       }    
     },
 )
 
