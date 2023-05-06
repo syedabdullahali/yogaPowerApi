@@ -37,7 +37,22 @@ const StockOrderListSchema = mongoose.Schema(
         },
         Color:{
              type: String,
-        }
+        },
+        Status:{
+           type: String,
+        },
+        receivedDate:{
+            type:Date
+        },
+        receivedBy:{
+        type: String
+       },
+       receiverId:{
+        type: String
+      },
+      ProductId:{
+        type: String
+      }
     },
 )
 
