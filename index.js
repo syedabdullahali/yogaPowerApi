@@ -172,8 +172,9 @@ app.use('/invoice', userValidate, require('./Routes/Invoice'));
 app.use('/emailsms', userValidate, require('./Routes/emailSender'));
 app.use('/memberCallReport', userValidate, require('./Routes/memberCallReport'));
 app.use('/allProductListingMaster', userValidate, require('./Routes/allProductListingMaster'));
-app.use('/shiftTimeSchedule', userValidate, require('./Routes/shiftTimeSchedule'));
+app.use('/inventoryListingMaster', userValidate, require('./Routes/inventoryListingMaster'));
 
+app.use('/shiftTimeSchedule', userValidate, require('./Routes/shiftTimeSchedule'));
 
 
 //admin router
@@ -181,11 +182,10 @@ const adminRoute=require('./Routes/shift-time')
 app.use('/',adminRoute)
 
 //Trainer
-
 //Live classes
-
 // Daily Attendence
 // to create a daily attendence
+
 app.post('/dailyattendence',async(req,res)=>{
     try{
      const dailyAttendence= await DailyAttendence.create(req.body)
