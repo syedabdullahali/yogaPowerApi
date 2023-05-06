@@ -52,6 +52,9 @@ const StockOrderListSchema = mongoose.Schema(
       },
       ProductId:{
         type: String
+      },
+      StatOfStock:{
+         type: String
       }
     },
 )
