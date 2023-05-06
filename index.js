@@ -2516,7 +2516,7 @@ app.post('/stockorderlist',async(req,res)=>{
 
 app.get('/stockorderlist-status-received-stock', async(req, res) => {
     try{
-        const receivedStockList = await StockOrderList.find({Status: "Recevied",Status: "Soldproduct"})
+        const receivedStockList = await StockOrderList.find({Status: "Recevied"})
         const map = new Map();
         for(let i=0; i<receivedStockList.length; i++){
             if(!map.has(receivedStockList[i].ProductId)){
