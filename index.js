@@ -2566,17 +2566,17 @@ app.delete('/stockalert/:id',async(req,res)=>{
 // })
 
 
-app.get('/stockorderlist-status-received', async(req, res) => {
-    try{
-        const receivedStockList = await StockOrderList.find({Status: "Recevied"})
-        res.json({
-            data: receivedStockList
-        })
-    }
-    catch(err){
-        res.status(500).json({message:err.message})
-    }
-})
+// app.get('/stockorderlist-status-received', async(req, res) => {
+//     try{
+//         const receivedStockList = await StockOrderList.find({Status: "Recevied"})
+//         res.json({
+//             data: receivedStockList
+//         })
+//     }
+//     catch(err){
+//         res.status(500).json({message:err.message})
+//     }
+// })
 
 //to  get stockOrderList by id
 // app.get('/stockorderlist/:id',async(req,res)=>{

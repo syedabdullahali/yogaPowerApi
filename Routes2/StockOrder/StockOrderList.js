@@ -12,11 +12,19 @@ router.post('/create',async(req,res)=>{
     }
  })
 
-
-
 router.get('/all',async(req,res)=>{
     try{
-        const  stockOrderList= await  StockOrderList.find({});
+        const  stockOrderList= await  StockOrderList.find();
+        res.status(200).json( stockOrderList);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+
+router.get('/received',async(req,res)=>{
+    try{
+        const  stockOrderList= await  StockOrderList.find({Status: "Recevied"});
         res.status(200).json( stockOrderList);
     }catch(error){
         res.status(5009).json({message:error.message})
@@ -32,6 +40,8 @@ router.get('/:id',async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 })
+
+
 
 //to update stockOrderList by id
 router.put('/update/:id',async(req,res)=>{
