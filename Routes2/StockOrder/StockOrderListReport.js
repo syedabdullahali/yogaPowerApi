@@ -44,7 +44,7 @@ router.get('/all', async(req, res) => {
         for(let values of map.values()){
             arr.push(values)
         }
-        res.json({ data: arr })
+        res.json(arr)
     }
     catch(err){
         res.status(500).json({message:err.message})
