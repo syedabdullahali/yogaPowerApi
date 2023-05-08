@@ -55,7 +55,23 @@ const StockOrderListSchema = mongoose.Schema(
       },
       StatOfStock:{
          type: String
-      }
+      },
+       Client_Name:{
+         type: String
+      },
+        Mobile_No:{
+         type: String
+      },
+        Product_Code:{
+         type: String
+      },
+       soldBy:{
+         type: String
+      },
+        sellerId:{
+         type: String
+      },
+
     },
 )
 
