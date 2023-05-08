@@ -43,7 +43,11 @@ const StockAssigningSchema = mongoose.Schema(
         },
         Size:{
               type: String,
-        }
+        },
+        ProductId:{
+              type: String,
+        },
+
     },
 )
 
