@@ -79,11 +79,12 @@ router.get('/:Product_Category',async(req,res)=>{
 })
 
 
+
 router.get('/alert', async(req, res) => {
     try{
         const receivedStockList = await StockOrderList.find({StatOfStock:'InStock'})
-        const alertData = resivedStockListFun(receivedStockList)
-        res.status(200).json(alertData)
+       
+        res.json(resivedStockListFun(receivedStockList).filter((el)=>+el.Available_Stock<=10))
     }
     catch(err){
         res.status(500).json({message:err.message})
