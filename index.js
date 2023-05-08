@@ -176,6 +176,8 @@ app.use('/inventoryListingMaster', userValidate, require('./Routes/inventoryList
 app.use('/shiftTimeSchedule', userValidate, require('./Routes/shiftTimeSchedule'));
 app.use('/stockOrderList',userValidate, require('./Routes2/StockOrder/StockOrderList'));
 app.use('/stockorderlist-status-received-stock',userValidate, require('./Routes2/StockOrder/StockOrderListReport'));
+app.use('/sockreport',userValidate, require('./Routes2/StockOrder/StockReport'));
+
 
 
 
