@@ -31,6 +31,16 @@ router.get('/recevied',async(req,res)=>{
     }
 })
 
+router.get('/sold',async(req,res)=>{
+    try{
+        const  stockOrderList= await  StockOrderList.find({"Status": "Sold"});
+        res.status(200).json( stockOrderList);
+    }catch(error){
+        res.status(5009).json({message:error.message})
+    }
+})
+
+
 router.get('/:id',async(req,res)=>{
     try{
         const {id} = req.params;
