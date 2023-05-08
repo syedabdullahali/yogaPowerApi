@@ -67,7 +67,7 @@ router.get('/:Product_Category',async(req,res)=>{
     try{
         const {Product_Category} = req.params;
 
-        const receivedStockList = await StockOrderList.find({Product_Category})
+        const receivedStockList = await StockOrderList.find({Product_Category:Product_Category.trim(),Status: "Recevied"})
 
         res.status(200).json(resivedStockListFun(receivedStockList))
     }catch(error){
