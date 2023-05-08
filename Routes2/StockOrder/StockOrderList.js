@@ -22,9 +22,9 @@ router.get('/all',async(req,res)=>{
 })
 
 
-router.get('/received',async(req,res)=>{
+router.get('/stock-status',async(req,res)=>{
     try{
-        const  stockOrderList= await  StockOrderList.find({Status: "Recevied"});
+        const  stockOrderList= await  StockOrderList.find({"StatOfStock": "InStock"});
         res.status(200).json( stockOrderList);
     }catch(error){
         res.status(5009).json({message:error.message})

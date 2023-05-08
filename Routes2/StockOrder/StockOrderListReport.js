@@ -12,11 +12,20 @@ router.get('/all', async(req, res) => {
                      
                 const qunatity =  +receivedStockList[i].Orders_Quantity
                                             
-                map.set(receivedStockList[i].ProductId, {['productName']: receivedStockList[i].Product_Name,
+                map.set(receivedStockList[i].ProductId, {
+                 ['productName']: receivedStockList[i].Product_Name,
                  ['Available_Stock']: qunatity,
                  ['Total_Stock']:  qunatity>0?qunatity:0,
                  ['soldQuantity']:  qunatity<0?qunatity:0,
-                 ['productDetails']: receivedStockList[i]});
+                 ['productDetails']: receivedStockList[i],
+                 ['productCode']:receivedStockList[i].Product_Category.split('').slice(0,2).join('').toUpperCase()+""+
+                  receivedStockList[i]?.ProductId.split("").slice(10).join('').toUpperCase()
+                 
+                
+                }
+                
+                 );
+                 
             }
             else{
                 let Available_Stock = map.get(receivedStockList[i].ProductId).Available_Stock
