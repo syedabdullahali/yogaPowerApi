@@ -10,7 +10,8 @@ let inventoryListingMaster = new mongoose.Schema({
     productPrize:String,
     ordersQty:String,
     Kg:String,
-    Color:String
+    Color:String,
+    Available_Stock:String
 }, { timestamps: true })
 
 
