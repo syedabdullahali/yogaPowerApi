@@ -4,7 +4,7 @@ const router = express.Router()
 const StockOrderList=require('../../Inventory/StockOrderList/stockOrderList')
 
 
-const resivedStockListFun =(receivedStockList,type)=>{
+const resivedStockListFun =(receivedStockList)=>{
     const map = new Map();
 
     for(let i=0; i<receivedStockList.length; i++){
@@ -51,9 +51,6 @@ const resivedStockListFun =(receivedStockList,type)=>{
     for(let values of map.values()){
         arr.push(values)
     }
-    if(type==='alert'){
-    return  arr.filter((el)=>+el.Available_Stock<=10)
-    }
     return arr
 }
 
@@ -62,7 +59,7 @@ router.get('/all', async(req, res) => {
     try{
         const receivedStockList = await StockOrderList.find({StatOfStock:'InStock'})
        
-        res.json(resivedStockListFun(receivedStockList,'in'))
+        res.json(resivedStockListFun(receivedStockList))
     }
     catch(err){
         res.status(500).json({message:err.message})
@@ -75,24 +72,23 @@ router.get('/:Product_Category',async(req,res)=>{
 
         const receivedStockList = await StockOrderList.find({Product_Category:Product_Category,StatOfStock:'InStock'})
 
-        res.status(200).json(resivedStockListFun(receivedStockList,'name'))
+        res.status(200).json(resivedStockListFun(receivedStockList))
     }catch(error){
         res.status(500).json({message:error.message})
     }
 })
 
 
-
-router.get('/alert', async(req, res) => {
+router.get('/alert',async(req,res)=>{
     try{
         const receivedStockList = await StockOrderList.find({StatOfStock:'InStock'})
-       
-        res.status(200).json(resivedStockListFun(receivedStockList,'alert'))
-    }
-    catch(err){
-        res.status(500).json({message:err.message})
+        res.status(200).json(resivedStockListFun(receivedStockList).filter((el)=>el?.Available_Stock<=10))
+    }catch(error){
+        res.status(500).json({message:error.message})
     }
 })
+
+
 
 
 module.exports = router
