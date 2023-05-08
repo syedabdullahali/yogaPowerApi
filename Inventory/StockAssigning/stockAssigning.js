@@ -7,39 +7,36 @@ const StockAssigningSchema = mongoose.Schema(
          },
         username: {
             type: String,
-            required: true,
         },
         Product_Category: {
             type: String,
-            required: true,
         },
         Product_Name: {
             type: String,
-            required: true
         },
         No_Of_Products: {
             type: String,
-            required: true
         },
         Brand_Name: {
             type: String,
-            required: true
         },
         Assigned_Date: {
             type: String,
-            required: true
         },
         Assigned_By: {
             type: String,
-            required: true
         },
         Assigned_To: {
             type: String,
-            required: true
+        },
+         Assigned_By_id: {
+            type: String,
+        },
+        Assigned_To_id: {
+            type: String,
         },
         Action: {
             type: String,
-            required: true
         },
         Color:{
               type: String,
