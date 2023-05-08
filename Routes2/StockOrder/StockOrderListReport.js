@@ -17,7 +17,7 @@ const resivedStockListFun =(receivedStockList)=>{
              ['Available_Stock']: qunatity,
              ['Total_Stock']:  qunatity>0?qunatity:0,
              ['soldQuantity']:  qunatity<0?qunatity:0,
-             ...receivedStockList[i],
+             ...[...Object.entries(receivedStockList[i])],
              ['productCode']:receivedStockList[i].Product_Category.split('').slice(0,2).join('').toUpperCase()+""+
               receivedStockList[i]?.ProductId.split("").slice(10).join('').toUpperCase()
             
@@ -37,7 +37,7 @@ const resivedStockListFun =(receivedStockList)=>{
             ['Available_Stock']: Available_Stock+ orderQuantity,
             ['soldQuantity'] :   +orderQuantity<0? soldQuantity + orderQuantity:soldQuantity,
             ['Total_Stock'] :   +orderQuantity>0? totalStock + orderQuantity:totalStock,
-            ...receivedStockList[i],
+            ...[...Object.entries(receivedStockList[i])],
             ['productCode']:receivedStockList[i].Product_Category.split('').slice(0,2).join('').toUpperCase()+""+
             receivedStockList[i]?.ProductId.split("").slice(10).join('').toUpperCase()
         })
