@@ -9,7 +9,7 @@ const StockAssigningSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        Category: {
+        Product_Category: {
             type: String,
             required: true,
         },
