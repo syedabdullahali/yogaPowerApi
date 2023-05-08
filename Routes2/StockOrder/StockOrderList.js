@@ -53,6 +53,8 @@ router.get('/:id',async(req,res)=>{
 
 
 
+
+
 //to update stockOrderList by id
 router.post('/update/:id',async(req,res)=>{
     try {
