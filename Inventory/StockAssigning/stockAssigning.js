@@ -41,7 +41,12 @@ const StockAssigningSchema = mongoose.Schema(
             type: String,
             required: true
         },
-        
+        Color:{
+              type: String,
+        },
+        Size:{
+              type: String,
+        }
     },
 )
 
