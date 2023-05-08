@@ -19,7 +19,8 @@ const resivedStockListFun =(receivedStockList)=>{
              ['soldQuantity']:  qunatity<0?qunatity:0,
              ['productDetails']: receivedStockList[i],
              ['productCode']:receivedStockList[i].Product_Category.split('').slice(0,2).join('').toUpperCase()+""+
-              receivedStockList[i]?.ProductId.split("").slice(10).join('').toUpperCase()
+              receivedStockList[i]?.ProductId.split("").slice(10).join('').toUpperCase(),
+            ['_id']:receivedStockList[i]._id
             
             }           
              );
@@ -39,7 +40,9 @@ const resivedStockListFun =(receivedStockList)=>{
             ['Total_Stock'] :   +orderQuantity>0? totalStock + orderQuantity:totalStock,
             ['productDetails']: receivedStockList[i],
             ['productCode']:receivedStockList[i].Product_Category.split('').slice(0,2).join('').toUpperCase()+""+
-            receivedStockList[i]?.ProductId.split("").slice(10).join('').toUpperCase()
+            receivedStockList[i]?.ProductId.split("").slice(10).join('').toUpperCase(),
+            ['_id']:receivedStockList[i]._id
+
         })
         }
     }
