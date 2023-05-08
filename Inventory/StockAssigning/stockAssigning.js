@@ -2,7 +2,10 @@ const mongoose = require('mongoose')
 
 const StockAssigningSchema = mongoose.Schema(
     {
-         username: {
+        date:{
+            type: Date,
+         },
+        username: {
             type: String,
             required: true,
         },
