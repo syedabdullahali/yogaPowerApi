@@ -52,7 +52,7 @@ const resivedStockListFun =(receivedStockList,type)=>{
         arr.push(values)
     }
     if(type==='alert'){
-     arr.filter((el)=>+el.Available_Stock<=10)
+    return  arr.filter((el)=>+el.Available_Stock<=10)
     }
     return arr
 }
@@ -87,7 +87,7 @@ router.get('/alert', async(req, res) => {
     try{
         const receivedStockList = await StockOrderList.find({StatOfStock:'InStock'})
        
-        res.json(resivedStockListFun(receivedStockList,'alert'))
+        res.status(200).json(resivedStockListFun(receivedStockList,'alert'))
     }
     catch(err){
         res.status(500).json({message:err.message})
