@@ -14,7 +14,7 @@ router.post('/create',async(req,res)=>{
 
 router.get('/all',async(req,res)=>{
     try{
-        const  stockOrderList= await  StockOrderList.find();
+        const  stockOrderList= await  StockOrderList.find({"Status": "Not Recevied yet"});
         res.status(200).json( stockOrderList);
     }catch(error){
         res.status(5009).json({message:error.message})
@@ -22,9 +22,9 @@ router.get('/all',async(req,res)=>{
 })
 
 
-router.get('/stock-status',async(req,res)=>{
+router.get('/recevied',async(req,res)=>{
     try{
-        const  stockOrderList= await  StockOrderList.find({"StatOfStock": "InStock"});
+        const  stockOrderList= await  StockOrderList.find({"Status": "Recevied"});
         res.status(200).json( stockOrderList);
     }catch(error){
         res.status(5009).json({message:error.message})
