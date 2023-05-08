@@ -30,7 +30,7 @@ const resivedStockListFun =(receivedStockList)=>{
             let Available_Stock = map.get(receivedStockList[i].ProductId).Available_Stock
             let soldQuantity = map.get(receivedStockList[i].ProductId).soldQuantity
             let totalStock = map.get(receivedStockList[i].ProductId).Total_Stock
-            let orderQuantity = parseInt(receivedStockList[i].Orders_Quantity)
+            let orderQuantity = +receivedStockList[i].Orders_Quantity
             map.set(
                 receivedStockList[i].ProductId,     
             {
