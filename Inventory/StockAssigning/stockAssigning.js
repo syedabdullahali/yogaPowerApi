@@ -47,7 +47,12 @@ const StockAssigningSchema = mongoose.Schema(
         ProductId:{
               type: String,
         },
-
+        Product_Prize:{
+              type: String,
+        },
+        Total_Price:{
+              type: String,
+        },
     },
 )
 
