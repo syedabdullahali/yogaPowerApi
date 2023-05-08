@@ -44,7 +44,7 @@ router.get('/:id',async(req,res)=>{
 
 
 //to update stockOrderList by id
-router.put('/update/:id',async(req,res)=>{
+router.post('/update/:id',async(req,res)=>{
     try {
         const response = await StockOrderList.findByIdAndUpdate(req.params.id, req.body);
         return res.status(200).json(response)
