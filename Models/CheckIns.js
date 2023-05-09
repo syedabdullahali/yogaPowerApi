@@ -1,6 +1,6 @@
 let mongoose = require('mongoose')
 
-let checkIns = new mongoose.Schema({
+let CheckIns = new mongoose.Schema({
     username: String,
     centercode: String,
     date: Date,
@@ -16,4 +16,4 @@ let checkIns = new mongoose.Schema({
     status: String,
 }, { timestamps: true })
 
-module.exports = mongoose.model('checkIns', checkIns);
+module.exports = mongoose.model('CheckIns', CheckIns);
