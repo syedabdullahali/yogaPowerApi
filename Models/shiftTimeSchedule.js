@@ -1,4 +1,4 @@
-const mongoose=require('mongoose')
+let mongoose = require('mongoose')
 
 const shiftTimeSchedule=new mongoose.Schema({
      shiftName:String,
@@ -6,7 +6,6 @@ const shiftTimeSchedule=new mongoose.Schema({
      endTime:Date,
      username:String,
      centerCode:String
-})
+}, { timestamps: true })
 
-const shiftTimeScheduleModel=mongoose.model('shiftTimeSchedule', shiftTimeSchedule)
-module.exports=shiftTimeScheduleModel
+module.exports=mongoose.model('shiftTimeSchedule', shiftTimeSchedule)
