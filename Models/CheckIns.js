@@ -4,7 +4,7 @@ let checkIns  = new mongoose.Schema({
 
 username: String,
 centercode: String,
-date: Date,
+date: String,
 attendanceId:String,
 name: String,
 designation: String,
