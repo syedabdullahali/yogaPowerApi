@@ -1,5 +1,5 @@
 const express = require('express');
-const shiftTimeSchedule = require('../Models/shiftTimeSchedule');
+const shiftTimeSchedule = require('../Models/shiftTimeSchedule')
 const router = express.Router()
 //modelNam
 
