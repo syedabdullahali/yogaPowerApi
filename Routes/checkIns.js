@@ -3,7 +3,6 @@ const router = express.Router()
 
 const checkIns = require('../Models/checkIns')
 
-
 router.get('/all',async function (req,res) {
 
 try{
@@ -54,4 +53,3 @@ router.delete('/delete/:id', async (req, res) => {
 })
 
 module.exports = router
-
