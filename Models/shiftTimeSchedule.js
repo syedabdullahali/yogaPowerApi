@@ -2,8 +2,8 @@ let mongoose = require('mongoose')
 
 let shiftTimeSchedule = new mongoose.Schema({
      shiftName:String,
-     startTime:Date,
-     endTime:Date,
+     startTime:String,
+     endTime:String,
      username:String,
      centerCode:String
 }, { timestamps: true })
