@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const checkIns = require('../Models/CheckIns')
+const checkIns = require('../Models/checkIns')
 
 
 router.get('/all',async function (req,res) {
