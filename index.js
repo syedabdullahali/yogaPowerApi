@@ -174,10 +174,10 @@ app.use('/memberCallReport', userValidate, require('./Routes/memberCallReport'))
 app.use('/allProductListingMaster', userValidate, require('./Routes/allProductListingMaster'));
 app.use('/inventoryListingMaster', userValidate, require('./Routes/inventoryListingMaster'));
 app.use('/shiftTimeSchedule', userValidate, require('./Routes/shiftTimeSchedule'));
+app.use('/checkIns',userValidate, require('./Routes/checkIns'));
 app.use('/stockOrderList',userValidate, require('./Routes2/StockOrder/StockOrderList'));
 app.use('/stockorderlist-status-received-stock',userValidate, require('./Routes2/StockOrder/StockOrderListReport'));
 app.use('/sockreport',userValidate, require('./Routes2/StockOrder/StockReport'));
-app.use('/checkIns',userValidate, require('./Routes2/checkIns'));
 
 
 
