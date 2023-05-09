@@ -52,7 +52,7 @@ const dailyStockReport = (data1,data2)=>{
                 date:new Date(),
                 productName:el.Product_Name,
                 openingStock:!compareDate(el[type],new Date())?qunatity:0,
-                purchaseStock:compareDate(el[type],new Date())?qunatity:0,
+                purchaseStock:compareDate(el[type],new Date()) && type==='receivedDate'?qunatity:0,
                 totalStock: qunatity>0?qunatity:0,
                 consumptionQty:compareDate(el[type],new Date()) &&qunatity<0?qunatity:0,
                 opningConsumptionOty:!compareDate(el[type],new Date()) &&qunatity<0?qunatity:0,
